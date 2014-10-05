@@ -32,13 +32,13 @@
     [super viewDidLoad];
     
     // Set labels based on whether the user is logged in or not.
-    [self setLoginLabels];
+    [self setToggleSwitches];
 }
 
-- (void)setLoginLabels
+- (void)setToggleSwitches
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    _userNameLabel.hidden = YES;
+
     // Check the boolean for showing closed issues. Update the switch accordingly.
     if ([defaults boolForKey:@"show_closed_issues"]) {
         _closedIssuesButton.on = YES;
@@ -48,6 +48,7 @@
         _closeButtonLabel.text = @"closed issues hidden";
     }
     
+    // Check the bollean for showing private repos.
     if ([defaults boolForKey:@"hide_private_repos"]) {
         _privateReposSwitch.on = NO;
         _privateReposLabel.text = @"private repos hidden";
@@ -57,23 +58,8 @@
     }
 }
 
-// Set UI to indicate that user has logged out.
--(void)clearAllButtons
-{
-    _viewRepoButton.hidden = YES;
-    _loginButton.hidden = YES;
-   [_loginButton setTitle:@"" forState:UIControlStateNormal];
-    _logoutButton.hidden = YES;
-    _userNameLabel.hidden = YES;
-    _closedIssuesButton.hidden = YES;
-    _closeButtonLabel.hidden = YES;
-}
-
 - (void)viewDidAppear:(BOOL)animated
 {
-    
-    [self clearAllButtons];
-    
     // Set the ui to its initial state.
     [self initUi];
 
@@ -89,6 +75,9 @@
 // Set the UI to its initial state.
 - (void)initUi
 {
+    // Clear all UI elements.
+    [self clearAllButtons];
+    
     // Set the background color of the home screen.
     self.view.backgroundColor = [Utils hexColor:@"edecec"];
 
@@ -115,9 +104,7 @@
     NSString *clientSecret = [config objectForKey:@"clientSecret"];
     [OCTClient setClientID:clientId clientSecret:clientSecret];
 
-    // Hide the login button as the login occurs.
-    _loginButton.hidden = YES;
-    [_loginButton setTitle:@"" forState:UIControlStateNormal];
+    [self messageDuringAuthorization];
     
     // Establish an OCTClient with Octokit.  Client with be authenticated.
     // This method is going to return the client object.
@@ -126,22 +113,7 @@
       signInToServerUsingWebBrowser:OCTServer.dotComServer scopes:OCTClientAuthorizationScopesRepository | OCTClientAuthorizationScopesUser | OCTClientAuthorizationScopesNotifications]
      subscribeNext:^(OCTClient *authenticatedClient) {
          
-         // Prepare to store some items in defaults.
-         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-         
-         // Grab & store user information.  We'll need this stuff a bunch.
-         NSString *token = authenticatedClient.token;
-         NSString *avatarURL = [authenticatedClient.user.avatarURL absoluteString];
-         NSMutableString *imgUrl = [NSMutableString stringWithFormat:avatarURL];
-         [imgUrl appendString:@"&s=120"];
-         
-         NSString *userName = authenticatedClient.user.login;
-        
-         [defaults setObject:token forKey:@"token"];
-         [defaults setObject:userName forKey:@"user_name"];
-         [defaults setObject:imgUrl forKey:@"profile_photo"];
-         
-         [defaults synchronize];
+         [self saveUser:authenticatedClient];
          
          // Now that repos have been stored, we can refresh the table view (on the main thread).
          dispatch_async(dispatch_get_main_queue(),
@@ -158,6 +130,38 @@
          _loginButton.hidden = NO;
          [_loginButton setTitle:@"login with github" forState:UIControlStateNormal];
      }];
+}
+
+// Save the user details as they are logged in.
+- (void)saveUser:(OCTClient *)client
+{
+    // Prepare to store some items in defaults.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // Grab & store user information.  We'll need this stuff a bunch.
+    NSString *token = client.token;
+    NSString *avatarURL = [client.user.avatarURL absoluteString];
+    NSMutableString *imgUrl = [NSMutableString stringWithFormat:avatarURL];
+    [imgUrl appendString:@"&s=120"];
+    
+    NSString *userName = client.user.login;
+    
+    [defaults setObject:token forKey:@"token"];
+    [defaults setObject:userName forKey:@"user_name"];
+    [defaults setObject:imgUrl forKey:@"profile_photo"];
+    
+    [defaults synchronize];
+}
+
+// Set the UI as a user is logging in.
+- (void)messageDuringAuthorization
+{
+    // Hide the login button as the login occurs.
+    _loginButton.hidden = YES;
+    [_loginButton setTitle:@"" forState:UIControlStateNormal];
+    _commitImg.hidden = YES;
+    _loggingInMessage.hidden = NO;
+    _loggingInMessage.text = @"logging in";
 }
 
 // Log out of github.
@@ -189,9 +193,26 @@
     _userNameLabel.text = userName;
 }
 
+// Set all buttons and labels to an empty/cleared state.
+-(void)clearAllButtons
+{
+    _viewRepoButton.hidden = YES;
+    _loginButton.hidden = YES;
+    [_loginButton setTitle:@"" forState:UIControlStateNormal];
+    _logoutButton.hidden = YES;
+    _userNameLabel.hidden = YES;
+    _closedIssuesButton.hidden = YES;
+    _closeButtonLabel.hidden = YES;
+    _commitImg.hidden = YES;
+    _loggingInMessage.hidden = YES;
+    _loggingInMessage.text = @"";
+}
+
 // Set UI to indicate that user is logged in.
 -(void)displayButtonsForLoggedInStatus
 {
+    _loggingInMessage.hidden = YES;
+    _loggingInMessage.text = @"";
     _viewRepoButton.hidden = NO;
     _loginButton.hidden = YES;
     [_loginButton setTitle:@"" forState:UIControlStateNormal];
@@ -202,8 +223,8 @@
     _privateReposLabel.hidden = NO;
     _privateReposSwitch.hidden = NO;
     _commitImg.hidden = YES;
-
     
+    // Delay the loading of the profile image slightly, or it will hold up the other actions.
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.5);
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
         [self updateProfilePhoto];
@@ -225,14 +246,15 @@
     _privateReposLabel.hidden = YES;
     _privateReposSwitch.hidden = YES;
     _commitImg.hidden = NO;
+    _loggingInMessage.hidden = YES;
+    _loggingInMessage.text = @"";
     
     // Set the logo image.
     UIImage *commitImg = [UIImage imageNamed:@"commits"];
     _commitImg.image = commitImg;
-    
 }
 
-// Toggle whether or not user will see hidden issues.
+// Toggle whether or not user will see private repos.
 - (IBAction)togglePrivateRepos:(id)sender {
 
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -248,6 +270,7 @@
     [defaults synchronize];
 }
 
+// Toggle whether or not user will see closed issues.
 - (IBAction)toggleShowClosedIssues:(id)sender {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

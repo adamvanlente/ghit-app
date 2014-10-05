@@ -42,11 +42,11 @@
     }
     
     if ([defaults objectForKey:@"editing_existing_issue"]) {
-        [self loadExistingIssue];
         _issueEditorTitle.text = @"Edit issue";
         _addNewIssueButton.hidden = YES;
         _updateAndCloseButton.hidden = NO;
         _updateIssueButton.hidden = NO;
+       [self loadExistingIssue];
     }
 }
 
@@ -68,6 +68,12 @@
         [selectedItems addObject:name];
     }
     
+    if ([issue.state isEqualToString:@"open"]) {
+        _updateAndCloseButton.hidden = NO;
+    } else {
+        _updateAndCloseButton.hidden = YES;
+    }
+
     NSDictionary *issueAssignee = issue.assignee;
     NSString *assignee = [issueAssignee objectForKey:@"login"];
     [defaults setObject:assignee forKey:@"current_issue_assignee"];

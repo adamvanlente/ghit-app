@@ -33,8 +33,9 @@ UIRefreshControl *refreshControl;
 {
     [super viewDidLoad];
     
+    // Remove those pesky lines beneath the table cells.
     self.tableView.separatorColor = [UIColor clearColor];
-    
+
     // Set up a refresh control when pulling down the list.
     refreshControl = [[UIRefreshControl alloc]init];
     [self.tableView addSubview:refreshControl];
@@ -47,6 +48,7 @@ UIRefreshControl *refreshControl;
     _loadingReposLabel.hidden = NO;
     _loadingReposLabel.text = @"loading repos";
     
+    // Show the user's repos.
     [self getUserRepos];
 }
 
@@ -121,10 +123,8 @@ UIRefreshControl *refreshControl;
     return [repoList count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     // Get the list of repos from the user defaults.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *repoList = [defaults objectForKey:@"repo_list"];
@@ -135,12 +135,19 @@ UIRefreshControl *refreshControl;
     // Grab the current repository and its details.
     NSUInteger row = [indexPath row];
     OCTRepository *repoItem = [NSKeyedUnarchiver unarchiveObjectWithData:repoList[row]];
-    NSString *repoName = repoItem.name;
-    NSString *repoDesc = repoItem.repoDescription;
-    NSString *count = [repoItem.openIssues stringValue];
+
+    [self setRepoIsPrivate:repoItem cell:cell];
+    [self setRepoNameAndDescription:repoItem cell:cell];
+    [self setIssueCount:repoItem cell:cell];
+    [self setRepoOwner:repoItem cell:cell];
     
+    return cell;
+}
+
+- (void)setRepoIsPrivate:(OCTRepository *)repo cell:(WXMWTableViewCell *)cell
+{
     // Set repo type to private/public.
-    BOOL isPrivate = repoItem.private;
+    BOOL isPrivate = repo.private;
     if (isPrivate) {
         cell.repoIcon.image = [UIImage imageNamed:@"repo_private.png"];
         cell.privateLabel.hidden = NO;
@@ -150,6 +157,13 @@ UIRefreshControl *refreshControl;
         cell.privateLabel.hidden = YES;
         cell.publicLabel.hidden = NO;
     }
+}
+
+- (void)setRepoNameAndDescription:(OCTRepository *)repo cell:(WXMWTableViewCell *)cell
+{
+    NSString *repoName = repo.name;
+    NSString *repoDesc = repo.repoDescription;
+    NSString *count = [repo.openIssues stringValue];
     
     // Set the rest of the labels for the repo.
     if ([repoDesc isEqualToString:@""]) {
@@ -158,19 +172,24 @@ UIRefreshControl *refreshControl;
     cell.repoNameLabel.text = repoName;
     cell.repoDescLabel.text = repoDesc;
     cell.issueCountLabel.text = count;
-    
+}
+
+- (void)setIssueCount:(OCTRepository *)repo cell:(WXMWTableViewCell *)cell
+{
+    NSString *count = [repo.openIssues stringValue];
     if ([count isEqualToString:@"1"]) {
         cell.openIssuesNoteLabel.text = @"open issue";
     } else {
         cell.openIssuesNoteLabel.text = @"open issues";
     }
-    NSString *owner = repoItem.ownerLogin;
-    cell.repoOwnerLabel.text = owner;
     cell.issueCountLabel.layer.masksToBounds = YES;
-
-    return cell;
 }
 
+- (void)setRepoOwner:(OCTRepository *)repo cell:(WXMWTableViewCell *)cell
+{
+    NSString *owner = repo.ownerLogin;
+    cell.repoOwnerLabel.text = owner;
+}
 
 #pragma mark - Navigation
 
@@ -206,44 +225,5 @@ UIRefreshControl *refreshControl;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 
 @end

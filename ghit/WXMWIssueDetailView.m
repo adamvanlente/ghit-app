@@ -92,7 +92,11 @@ BOOL firstLoad = YES;
 - (void)setIssueToScreen:(OCTIssue *)issue
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    NSString *userName = [defaults objectForKey:@"user_name"];
     NSString *currentRepoName = [defaults objectForKey:@"current_repo_name"];
+    NSString *repoTitle = [NSString stringWithFormat:@"%@/%@", userName, currentRepoName];
+    
     NSNumber *comments = issue.comments;
     NSString *commentCount = [comments stringValue];
 
@@ -103,7 +107,7 @@ BOOL firstLoad = YES;
     }
     
     // Set the UI to display information about the various aspects of an issue.
-    [self setIssueTitles:currentRepoName title:issue.title];
+    [self setIssueTitles:repoTitle title:issue.title];
     [self setIssueDescription:issue];
     [self setIssueNumber:issue];
     [self setIssueState:issue];
@@ -131,7 +135,7 @@ BOOL firstLoad = YES;
         [_webViewer setOpaque:NO];
         _webViewer.backgroundColor = [Utils hexColor:@"edecec"];
         
-        [_webViewer loadHTMLString:[NSString stringWithFormat:@"<font face='Helvetica' size='3'>%@", markedDownComment] baseURL:nil];
+        [_webViewer loadHTMLString:[NSString stringWithFormat:@"<style type='text/css'>body { font-family: 'Helvetica Neue', sans-serif; font-size: 14px; font-weight: light; color: #333; } </style>%@", markedDownComment] baseURL:nil];
     }
 }
 

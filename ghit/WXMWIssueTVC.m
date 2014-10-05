@@ -52,12 +52,13 @@ UIRefreshControl *refreshControl;
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//
+    [self.tableView reloadData];
 }
 
 // Refresh the current list of issues.
 - (void)refreshIssueList
 {
+    // Clear some defaults that indicate the current state of issue viewing.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults removeObjectForKey:@"adding_new_issue"];
     [defaults removeObjectForKey:@"editing_existing_issue"];
@@ -79,6 +80,7 @@ UIRefreshControl *refreshControl;
         NSString *token = [defaults objectForKey:@"token"];
         NSString *currentRepoName = [defaults objectForKey:@"current_repo_name"];
 
+        // Determine whether to show all issues or only open issues.
         NSString *issuesToShow;
         if ([defaults objectForKey:@"show_closed_issues"]) {
             issuesToShow = @"all";
@@ -96,46 +98,56 @@ UIRefreshControl *refreshControl;
         OCTRepository *repoItem = [NSKeyedUnarchiver unarchiveObjectWithData:repoList[row]];
         NSString *owner = repoItem.ownerLogin;
         
-        // Create a request for the list of issues.
-        RACSignal *issueRequest = [client fetchIssuesForRepo:currentRepoName owner:owner state:issuesToShow];
+        [self getRepoIssues:client repo:currentRepoName owner:owner state:issuesToShow];
+        
+    }
+}
 
-        // Make the request and collect the response as one array.
-        [[issueRequest collect] subscribeNext:^(NSArray *issues) {
+- (void)getRepoIssues:(OCTClient *)client repo:(NSString *)repo owner:(NSString *)owner state:(NSString *)state
+{
+    // Create a request for the list of issues.
+    RACSignal *issueRequest = [client fetchIssuesForRepo:repo owner:owner state:state];
+    
+    // Make the request and collect the response as one array.
+    [[issueRequest collect] subscribeNext:^(NSArray *issues) {
         
-            // Create a new array for the items that are returned.
-            NSMutableArray *issueList = [[NSMutableArray alloc] init];
-
-            // For each returned issue, create an encoded version that can be store in NSUserDefaults.
-            for (id issue in issues) {
-                NSData *issueEncoded = [NSKeyedArchiver archivedDataWithRootObject:issue];
-                [issueList addObject:issueEncoded];
-            }
+        // Create a new array for the items that are returned.
+        NSMutableArray *issueList = [[NSMutableArray alloc] init];
         
-            // Save an object in user defaults for the issue list.
-            [defaults setObject:issueList forKey:@"issues_list"];
-            [defaults synchronize];
+        // For each returned issue, create an encoded version that can be store in NSUserDefaults.
+        for (id issue in issues) {
+            NSData *issueEncoded = [NSKeyedArchiver archivedDataWithRootObject:issue];
+            [issueList addObject:issueEncoded];
+        }
         
-            // Reload the table view data (call reload data on the main thread).
-            dispatch_async(dispatch_get_main_queue(),
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        // Save an object in user defaults for the issue list.
+        [defaults setObject:issueList forKey:@"issues_list"];
+        [defaults synchronize];
+        
+        // Reload the table view data (call reload data on the main thread).
+        dispatch_async(dispatch_get_main_queue(),
                        ^{    //back on main thread
                            
                            // Set label if no issues exist.
                            if (issueList.count == 0) {
                                _loadingIssuesLabel.text = @"no issues found";
                            }
-
+                           
                            [self.tableView reloadData];
                            [refreshControl endRefreshing];
                        });
-        } error:^(NSError *error) {
-            // Show an alert.
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
-                                                            message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }];
-    }
+    } error:^(NSError *error) {
+        // Show an alert.
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }];
+
 }
 
+
+// Method to clear the list of issues before reloading.
 - (void)clearIssuesList
 {
     // Set a label to indicate that issues are loading.
@@ -162,7 +174,10 @@ UIRefreshControl *refreshControl;
     
     OCTRepository *repoItem = [NSKeyedUnarchiver unarchiveObjectWithData:repoList[row]];
     
-    _currentRepoNameLabel.text = repoItem.name;
+    NSString *userName = [defaults objectForKey:@"user_name"];
+    NSString *repoTitle = [NSString stringWithFormat:@"%@/%@", userName, repoItem.name];
+    
+    _currentRepoNameLabel.text = repoTitle;
 }
 
 - (void)didReceiveMemoryWarning
@@ -201,6 +216,13 @@ UIRefreshControl *refreshControl;
     // Indentify the issue for the current row.
     OCTIssue *issue = [NSKeyedUnarchiver unarchiveObjectWithData:issueList[row]];
 
+    [self setIssueToCell:cell issue:issue issueList:issueList];
+    
+    return cell;
+}
+
+- (void)setIssueToCell:(WXMWIssueTVCell *)cell issue:(OCTIssue *)issue issueList:(NSMutableArray *)issueList
+{
     // Set the title of the current row.
     cell.issueTitleLabel.text = issue.title;
     
@@ -209,7 +231,7 @@ UIRefreshControl *refreshControl;
     NSString *objectId = issue.objectID;
     [issueNumber appendString:objectId];
     cell.issueNumberLabel.text = issueNumber;
-   
+    
     // Set the label for the state (open/closed).
     if ([issue.state isEqualToString:@"open"]) {
         cell.issueOpenLabel.hidden = NO;
@@ -225,8 +247,6 @@ UIRefreshControl *refreshControl;
     if (count > 0) {
         _loadingIssuesLabel.hidden = YES;
     }
-    
-    return cell;
 }
 
 
@@ -239,6 +259,7 @@ UIRefreshControl *refreshControl;
     // Pass the selected object to the new view controller.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+    // User is progressing to view details of an issues.
     if ([segue.identifier isEqualToString:@"viewIssueDetail"]) {
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
         NSUInteger row = ip.row;
@@ -248,50 +269,12 @@ UIRefreshControl *refreshControl;
         [defaults synchronize];
     }
     
+    // User is creating a new issue.
     if ([segue.identifier isEqualToString:@"createNewIssue"]) {
-        
         [defaults removeObjectForKey:@"editing_existing_issue"];
         [defaults setBool:YES forKey:@"adding_new_issue"];
         [defaults synchronize];
     }
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 @end

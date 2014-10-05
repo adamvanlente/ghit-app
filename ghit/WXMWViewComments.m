@@ -37,7 +37,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self loadComments];    
+    [[_commentHolder subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self loadComments];
 }
 
 - (void)loadComments
@@ -103,7 +104,7 @@
         commentLabel.text = @"";
 
         CGFloat prevLabelHeight = commentLabel.frame.size.height;
-        CGFloat newCommentHeight = prevLabelHeight + (padding * 2.0);
+        CGFloat newCommentHeight = prevLabelHeight + (padding * 1.5);
         commentLabel.frame = CGRectMake(20, fromTop, 290, newCommentHeight);
 
         CGFloat textLabelHeight = prevLabelHeight + (padding * 2);
@@ -114,7 +115,7 @@
 
         [textLabel setOpaque:NO];
         textLabel.backgroundColor = [Utils hexColor:@"edecec"];
-        [textLabel loadHTMLString:[NSString stringWithFormat:@"<font face='Helvetica' size='3'>%@", markedDownComment] baseURL:nil];
+        [textLabel loadHTMLString:[NSString stringWithFormat:@"<style type='text/css'>body { font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight: light; color: #333; } </style>%@", markedDownComment] baseURL:nil];
         
         [textLabel sizeToFit];
         [commentLabel addSubview:textLabel];

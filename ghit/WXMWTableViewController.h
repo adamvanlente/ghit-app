@@ -13,6 +13,8 @@
 
 // Label that indicates if repos are loading.
 @property (weak, nonatomic) IBOutlet UILabel *loadingReposLabel;
+
+// Home button - brings users 'home' (settings page).
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *homeButton;
 
 @end

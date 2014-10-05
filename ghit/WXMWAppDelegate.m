@@ -16,9 +16,16 @@
     [[UINavigationBar appearance] setBarTintColor:[UIColor darkGrayColor]];
     [[UINavigationBar appearance] setTintColor:[UIColor darkGrayColor]];
     [[UIBarButtonItem appearance] setTintColor:[UIColor darkGrayColor]];
+
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"bar_bg_lt.png"]
                                        forBarMetrics:UIBarMetricsDefault];
 
+    
+    UIBarButtonItem *backbutton =  [[UIBarButtonItem alloc] initWithTitle:@"back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    
+    [backbutton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [UIColor darkGrayColor],UITextAttributeTextColor,[UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f],UITextAttributeFont,
+                                        nil] forState:UIControlStateNormal];
     
     return YES;
 }

@@ -27,12 +27,14 @@
 @property (weak, nonatomic) IBOutlet UISwitch *closedIssuesButton;
 @property (weak, nonatomic) IBOutlet UILabel *closeButtonLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *privateReposSwitch;
-- (IBAction)togglePrivateRepos:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *privateReposLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *commitImg;
+@property (weak, nonatomic) IBOutlet UILabel *loggingInMessage;
 
-
+// Method to toggle the visiblity of closed issues.
 - (IBAction)toggleShowClosedIssues:(id)sender;
 
+// Method to toggle the visiblity of private repos.
+- (IBAction)togglePrivateRepos:(id)sender;
 
 @end
