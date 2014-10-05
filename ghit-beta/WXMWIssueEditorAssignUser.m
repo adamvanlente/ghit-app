@@ -28,6 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _loadingLabel.hidden = NO;
     
 }
 
@@ -54,6 +55,8 @@
     }
     
     [self createUserButton:@"no assignee" fromTop:fromTop selectedUser:selectedUser];
+    
+    _loadingLabel.hidden = YES;
 }
 
 - (void)createUserButton:(NSString *)user fromTop:(CGFloat)fromTop selectedUser:(NSString *)selectedUser

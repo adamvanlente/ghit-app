@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 - (IBAction)cancelAssignUser:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 @end

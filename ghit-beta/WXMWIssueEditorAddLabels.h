@@ -14,5 +14,6 @@
 - (IBAction)addLabelsToIssue:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 - (IBAction)cancelAddingLabelsToIssue:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 
 @end

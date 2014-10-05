@@ -72,7 +72,6 @@ UIRefreshControl *refreshControl;
     } else {
     
         // Stop the iOs refreshing icon and clear the issue list.
-        [refreshControl endRefreshing];
         [self clearIssuesList];
 
         // Load some of the saved user defaults.
@@ -126,6 +125,7 @@ UIRefreshControl *refreshControl;
                            }
 
                            [self.tableView reloadData];
+                           [refreshControl endRefreshing];
                        });
         } error:^(NSError *error) {
             // Show an alert.

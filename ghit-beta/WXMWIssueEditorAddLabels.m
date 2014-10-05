@@ -47,6 +47,8 @@ NSMutableArray *selectedItems;
     NSString *userName = [defaults objectForKey:@"user_name"];
     NSString *currentRepo = [defaults objectForKey:@"current_repo_name"];
     
+    _loadingLabel.hidden = NO;
+    
     NSString *token = [defaults objectForKey:@"token"];
     OCTUser *user = [OCTUser userWithRawLogin:userName server:OCTServer.dotComServer];
     OCTClient *client = [OCTClient authenticatedClientWithUser:user token:token];
@@ -58,6 +60,7 @@ NSMutableArray *selectedItems;
                            ^{
                                //back on main thread
                                [self showLabelsOnScreen:labels];
+                                _loadingLabel.hidden = YES;
                            });
             
         } error:^(NSError *error) {
@@ -88,17 +91,30 @@ NSMutableArray *selectedItems;
 {
     
     CGFloat fromTop = 0;
-    CGFloat alpha = 0.3;
+    CGFloat alpha = 0.2;
     
     for (id label in labels) {
         OCTIssue *issueLabel = label;
         NSString *name = issueLabel.name;
         NSString *color = issueLabel.color;
         
-        UIButton *labelButton =[[UIButton alloc] initWithFrame:CGRectMake(15, fromTop, 290, 40)];
-        [labelButton setBackgroundColor: [Utils hexColor:color]];
+        UIButton *labelButton =[[UIButton alloc] initWithFrame:CGRectMake(40, fromTop, 240, 40)];
         [labelButton setTitle:name forState:UIControlStateNormal];
-        labelButton.titleLabel.font = [UIFont systemFontOfSize:20.0];
+        labelButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:18.0];
+        
+        UIColor *bgColor = [Utils hexColor:color];
+        [labelButton setBackgroundColor: bgColor];
+        
+        const CGFloat *componentColors = CGColorGetComponents(bgColor.CGColor);
+        
+        CGFloat colorBrightness = ((componentColors[0] * 299) + (componentColors[1] * 587) + (componentColors[2] * 114)) / 1000;
+        
+        if (colorBrightness < 0.6) {
+             [labelButton setTitleColor:[Utils hexColor:@"FFFFFF"] forState:UIControlStateNormal];
+        } else {
+             [labelButton setTitleColor:[Utils hexColor:@"333333"] forState:UIControlStateNormal];
+        }
+        
         [labelButton.titleLabel setTextAlignment:NSTextAlignmentCenter];
         
         // Keep track of which labels are selected.

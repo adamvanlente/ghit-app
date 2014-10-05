@@ -9,11 +9,14 @@
 #import "WXMWTableViewController.h"
 #import "WXMWLoginScreen.h"
 #import "WXMWTableViewCell.h"
+#import "WXMWNavController.h"
 #import <OctoKit/OctoKit.h>
 
 @interface WXMWTableViewController ()
 
 @end
+
+UIRefreshControl *refreshControl;
 
 @implementation WXMWTableViewController
 
@@ -31,6 +34,11 @@
     [super viewDidLoad];
     
     self.tableView.separatorColor = [UIColor clearColor];
+    
+    // Set up a refresh control when pulling down the list.
+    refreshControl = [[UIRefreshControl alloc]init];
+    [self.tableView addSubview:refreshControl];
+    [refreshControl addTarget:self action:@selector(getUserRepos) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -39,6 +47,11 @@
     _loadingReposLabel.hidden = NO;
     _loadingReposLabel.text = @"loading repos";
     
+    [self getUserRepos];
+}
+
+- (void)getUserRepos
+{
     // Grab the user's information and create an OCTClient with it.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *userName = [defaults objectForKey:@"user_name"];
@@ -48,7 +61,6 @@
     
     // Fetch the user's repos.
     [self fetchRepositoriesWithClient:client];
-    
 }
 
 // Fetch a client's owned repositories.
@@ -81,6 +93,7 @@
                        ^{
                            _loadingReposLabel.hidden = YES;
                            [self.tableView reloadData];
+                           [refreshControl endRefreshing];
                        });
         
         
@@ -175,7 +188,7 @@
         OCTRepository *repoItem = [NSKeyedUnarchiver unarchiveObjectWithData:repoList[row]];
         NSString *repoName = repoItem.name;
         NSString *stringedRow = [NSString stringWithFormat:@"%lu", (unsigned long)row];
-        NSLog(@"%@", stringedRow);
+
         // Store the current repo name and index.
         [defaults setObject:repoName forKey:@"current_repo_name"];
         [defaults setObject:stringedRow forKey:@"current_repo_index"];

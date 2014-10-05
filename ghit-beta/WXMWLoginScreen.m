@@ -49,8 +49,23 @@
     }
 }
 
+// Set UI to indicate that user has logged out.
+-(void)clearAllButtons
+{
+    _viewRepoButton.hidden = YES;
+    _loginButton.hidden = YES;
+   [_loginButton setTitle:@"" forState:UIControlStateNormal];
+    _logoutButton.hidden = YES;
+    _userNameLabel.hidden = YES;
+    _closedIssuesButton.hidden = YES;
+    _closeButtonLabel.hidden = YES;
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
+    
+    [self clearAllButtons];
+    
     // Set the ui to its initial state.
     [self initUi];
 
@@ -58,9 +73,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"profile_photo"]) {
         [self displayButtonsForLoggedInStatus];
-
-        // TODO profile photo taking much too long to load/waste of rate limit.  Rewrite to store image.
-        // [self updateProfilePhoto];
     } else {
         [self displayButtonsForLoggedOutStatus];
     }
@@ -97,7 +109,8 @@
 
     // Hide the login button as the login occurs.
     _loginButton.hidden = YES;
-
+    [_loginButton setTitle:@"" forState:UIControlStateNormal];
+    
     // Establish an OCTClient with Octokit.  Client with be authenticated.
     // This method is going to return the client object.
     // FYI the auth scopes allow us to do what we do here as regards getting repos, updating user info.
@@ -111,11 +124,15 @@
          // Grab & store user information.  We'll need this stuff a bunch.
          NSString *token = authenticatedClient.token;
          NSString *avatarURL = [authenticatedClient.user.avatarURL absoluteString];
+         NSMutableString *imgUrl = [NSMutableString stringWithFormat:avatarURL];
+         [imgUrl appendString:@"&s=120"];
+         
          NSString *userName = authenticatedClient.user.login;
-
+        
          [defaults setObject:token forKey:@"token"];
          [defaults setObject:userName forKey:@"user_name"];
-         [defaults setObject:avatarURL forKey:@"profile_photo"];
+         [defaults setObject:imgUrl forKey:@"profile_photo"];
+         
          [defaults synchronize];
          
          // Now that repos have been stored, we can refresh the table view (on the main thread).
@@ -131,6 +148,7 @@
          
          // Hide the login button as the login occurs.
          _loginButton.hidden = NO;
+         [_loginButton setTitle:@"login with github" forState:UIControlStateNormal];
      }];
 }
 
@@ -168,7 +186,16 @@
 {
     _viewRepoButton.hidden = NO;
     _loginButton.hidden = YES;
+    [_loginButton setTitle:@"" forState:UIControlStateNormal];
     _logoutButton.hidden = NO;
+    _userNameLabel.hidden = NO;
+    _closedIssuesButton.hidden = NO;
+    _closeButtonLabel.hidden = NO;
+    dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.5);
+    dispatch_after(delay, dispatch_get_main_queue(), ^(void){
+        [self updateProfilePhoto];
+    });
+
 }
 
 // Set UI to indicate that user has logged out.
@@ -176,8 +203,10 @@
 {
     _viewRepoButton.hidden = YES;
     _loginButton.hidden = NO;
+   [_loginButton setTitle:@"login with github" forState:UIControlStateNormal];
     _logoutButton.hidden = YES;
     _userNameLabel.text = @"";
+    _userNameLabel.hidden = YES;
     _profilePic.image = nil;
     _closedIssuesButton.hidden = YES;
     _closeButtonLabel.hidden = YES;
