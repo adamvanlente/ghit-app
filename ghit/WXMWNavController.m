@@ -2,7 +2,7 @@
 //  WXMWNavController.m
 //  ghit
 //
-//  Created by Adam VanLente on 9/23/14.
+//  Created by Adam VanLente on 9/30/14.
 //  Copyright (c) 2014 West by Midwest. All rights reserved.
 //
 
@@ -13,11 +13,6 @@
 @end
 
 @implementation WXMWNavController
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,13 +26,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
 }
 
 /*

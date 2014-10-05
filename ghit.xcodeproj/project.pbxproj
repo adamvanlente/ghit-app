@@ -35,18 +35,20 @@
 		C7642ECB19D4F63100CE0C1F /* WXMWIssueTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7642ECA19D4F63100CE0C1F /* WXMWIssueTVC.m */; };
 		C7642ED119D4F70100CE0C1F /* WXMWIssueTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7642ED019D4F70100CE0C1F /* WXMWIssueTVCell.m */; };
 		C7CBC1B919DE6F39001E3AC4 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7CBC1B819DE6F39001E3AC4 /* Images-2.xcassets */; };
-		C7D05A1219DF850600D46EE2 /* bar_bg_dk.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0619DF850600D46EE2 /* bar_bg_dk.png */; };
-		C7D05A1319DF850600D46EE2 /* bar_bg_lt.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0719DF850600D46EE2 /* bar_bg_lt.png */; };
-		C7D05A1419DF850600D46EE2 /* bar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0819DF850600D46EE2 /* bar_logo.png */; };
-		C7D05A1519DF850600D46EE2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0919DF850600D46EE2 /* Default-568h@2x.png */; };
-		C7D05A1619DF850600D46EE2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0A19DF850600D46EE2 /* Default@2x.png */; };
-		C7D05A1719DF850600D46EE2 /* icon_58x50.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0B19DF850600D46EE2 /* icon_58x50.png */; };
-		C7D05A1819DF850600D46EE2 /* icon_80_80.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0C19DF850600D46EE2 /* icon_80_80.png */; };
-		C7D05A1919DF850600D46EE2 /* icon_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0D19DF850600D46EE2 /* icon_120x120.png */; };
-		C7D05A1B19DF850600D46EE2 /* repo_private.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A0F19DF850600D46EE2 /* repo_private.png */; };
-		C7D05A1C19DF850600D46EE2 /* repo_public.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A1019DF850600D46EE2 /* repo_public.png */; };
-		C7D05A1D19DF850600D46EE2 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A1119DF850600D46EE2 /* settings.png */; };
-		C7D05A2A19E0B22700D46EE2 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D05A2919E0B22700D46EE2 /* logo.png */; };
+		C7D56D6719E0D36800741F23 /* bar_bg_dk.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5919E0D36800741F23 /* bar_bg_dk.png */; };
+		C7D56D6819E0D36800741F23 /* bar_bg_lt.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5A19E0D36800741F23 /* bar_bg_lt.png */; };
+		C7D56D6919E0D36800741F23 /* bar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5B19E0D36800741F23 /* bar_logo.png */; };
+		C7D56D6A19E0D36800741F23 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5C19E0D36800741F23 /* Default-568h@2x.png */; };
+		C7D56D6B19E0D36800741F23 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5D19E0D36800741F23 /* Default@2x.png */; };
+		C7D56D6C19E0D36800741F23 /* for_gh.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5E19E0D36800741F23 /* for_gh.png */; };
+		C7D56D6D19E0D36800741F23 /* icon_58x50.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5F19E0D36800741F23 /* icon_58x50.png */; };
+		C7D56D6E19E0D36800741F23 /* icon_80_80.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6019E0D36800741F23 /* icon_80_80.png */; };
+		C7D56D6F19E0D36800741F23 /* icon_120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6119E0D36800741F23 /* icon_120x120.png */; };
+		C7D56D7019E0D36800741F23 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6219E0D36800741F23 /* logo.png */; };
+		C7D56D7119E0D36800741F23 /* repo_private.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6319E0D36800741F23 /* repo_private.png */; };
+		C7D56D7219E0D36800741F23 /* repo_public.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6419E0D36800741F23 /* repo_public.png */; };
+		C7D56D7319E0D36800741F23 /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6519E0D36800741F23 /* settings_icon.png */; };
+		C7D56D7419E0D36800741F23 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6619E0D36800741F23 /* settings.png */; };
 		C7E6B62419DF59440056356E /* libMMMarkdown-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E6B61F19DF59220056356E /* libMMMarkdown-iOS.a */; };
 		C7F78BDF19D6460A00BACEBE /* WXMWIssueDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F78BDE19D6460A00BACEBE /* WXMWIssueDetailView.m */; };
 /* End PBXBuildFile section */
@@ -57,7 +59,7 @@
 			containerPortal = C737D67519D0DA6D00687EBB /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C737D67C19D0DA6D00687EBB;
-			remoteInfo = "ghit-beta";
+			remoteInfo = ghit;
 		};
 		C7E6B61C19DF59220056356E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -108,21 +110,21 @@
 		C70C52E019DDB8F1009BABA0 /* WXMWIssueEditorAssignUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMWIssueEditorAssignUser.h; sourceTree = "<group>"; };
 		C70C52E119DDB8F1009BABA0 /* WXMWIssueEditorAssignUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMWIssueEditorAssignUser.m; sourceTree = "<group>"; };
 		C70C52E319DDFF04009BABA0 /* libPods-Mantle.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-Mantle.a"; path = "Pods/build/Debug-iphoneos/libPods-Mantle.a"; sourceTree = "<group>"; };
-		C737D67D19D0DA6D00687EBB /* ghit-beta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ghit-beta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C737D67D19D0DA6D00687EBB /* ghit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ghit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C737D68019D0DA6D00687EBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C737D68219D0DA6D00687EBB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C737D68419D0DA6D00687EBB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C737D68819D0DA6D00687EBB /* ghit-beta-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ghit-beta-Info.plist"; sourceTree = "<group>"; };
+		C737D68819D0DA6D00687EBB /* ghit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ghit-Info.plist"; sourceTree = "<group>"; };
 		C737D68A19D0DA6D00687EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C737D68C19D0DA6D00687EBB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C737D68E19D0DA6D00687EBB /* ghit-beta-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ghit-beta-Prefix.pch"; sourceTree = "<group>"; };
+		C737D68E19D0DA6D00687EBB /* ghit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ghit-Prefix.pch"; sourceTree = "<group>"; };
 		C737D68F19D0DA6D00687EBB /* WXMWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXMWAppDelegate.h; sourceTree = "<group>"; };
 		C737D69019D0DA6D00687EBB /* WXMWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXMWAppDelegate.m; sourceTree = "<group>"; };
 		C737D69319D0DA6D00687EBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C737D69819D0DA6D00687EBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		C737D69E19D0DA6D00687EBB /* ghit-betaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ghit-betaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C737D69E19D0DA6D00687EBB /* ghitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ghitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C737D69F19D0DA6D00687EBB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		C737D6A719D0DA6D00687EBB /* ghit-betaTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ghit-betaTests-Info.plist"; sourceTree = "<group>"; };
+		C737D6A719D0DA6D00687EBB /* ghitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ghitTests-Info.plist"; sourceTree = "<group>"; };
 		C737D6A919D0DA6D00687EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C737D6AB19D0DA6D00687EBB /* ghit_betaTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ghit_betaTests.m; sourceTree = "<group>"; };
 		C737D6C319D0F04A00687EBB /* WXMWLoginScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMWLoginScreen.h; sourceTree = "<group>"; };
@@ -139,18 +141,20 @@
 		C7CBC1B419DE6D7E001E3AC4 /* icon_80_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_80_80.png; sourceTree = "<group>"; };
 		C7CBC1B519DE6D8B001E3AC4 /* icon_58x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_58x50.png; sourceTree = "<group>"; };
 		C7CBC1B819DE6F39001E3AC4 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Images-2.xcassets"; sourceTree = "<group>"; };
-		C7D05A0619DF850600D46EE2 /* bar_bg_dk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_bg_dk.png; path = ../../adamvanlente/Desktop/ghit/app_icons/bar_bg_dk.png; sourceTree = "<group>"; };
-		C7D05A0719DF850600D46EE2 /* bar_bg_lt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_bg_lt.png; path = ../../adamvanlente/Desktop/ghit/app_icons/bar_bg_lt.png; sourceTree = "<group>"; };
-		C7D05A0819DF850600D46EE2 /* bar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_logo.png; path = ../../adamvanlente/Desktop/ghit/app_icons/bar_logo.png; sourceTree = "<group>"; };
-		C7D05A0919DF850600D46EE2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../adamvanlente/Desktop/ghit/app_icons/Default-568h@2x.png"; sourceTree = "<group>"; };
-		C7D05A0A19DF850600D46EE2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../../adamvanlente/Desktop/ghit/app_icons/Default@2x.png"; sourceTree = "<group>"; };
-		C7D05A0B19DF850600D46EE2 /* icon_58x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_58x50.png; path = ../../adamvanlente/Desktop/ghit/app_icons/icon_58x50.png; sourceTree = "<group>"; };
-		C7D05A0C19DF850600D46EE2 /* icon_80_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_80_80.png; path = ../../adamvanlente/Desktop/ghit/app_icons/icon_80_80.png; sourceTree = "<group>"; };
-		C7D05A0D19DF850600D46EE2 /* icon_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_120x120.png; path = ../../adamvanlente/Desktop/ghit/app_icons/icon_120x120.png; sourceTree = "<group>"; };
-		C7D05A0F19DF850600D46EE2 /* repo_private.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = repo_private.png; path = ../../adamvanlente/Desktop/ghit/app_icons/repo_private.png; sourceTree = "<group>"; };
-		C7D05A1019DF850600D46EE2 /* repo_public.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = repo_public.png; path = ../../adamvanlente/Desktop/ghit/app_icons/repo_public.png; sourceTree = "<group>"; };
-		C7D05A1119DF850600D46EE2 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../../adamvanlente/Desktop/ghit/app_icons/settings.png; sourceTree = "<group>"; };
-		C7D05A2919E0B22700D46EE2 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../../adamvanlente/Desktop/ghit/app_icons/logo.png; sourceTree = "<group>"; };
+		C7D56D5919E0D36800741F23 /* bar_bg_dk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_bg_dk.png; path = ../ghit/app_icons/bar_bg_dk.png; sourceTree = "<group>"; };
+		C7D56D5A19E0D36800741F23 /* bar_bg_lt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_bg_lt.png; path = ../ghit/app_icons/bar_bg_lt.png; sourceTree = "<group>"; };
+		C7D56D5B19E0D36800741F23 /* bar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_logo.png; path = ../ghit/app_icons/bar_logo.png; sourceTree = "<group>"; };
+		C7D56D5C19E0D36800741F23 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../ghit/app_icons/Default-568h@2x.png"; sourceTree = "<group>"; };
+		C7D56D5D19E0D36800741F23 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../ghit/app_icons/Default@2x.png"; sourceTree = "<group>"; };
+		C7D56D5E19E0D36800741F23 /* for_gh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = for_gh.png; path = ../ghit/app_icons/for_gh.png; sourceTree = "<group>"; };
+		C7D56D5F19E0D36800741F23 /* icon_58x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_58x50.png; path = ../ghit/app_icons/icon_58x50.png; sourceTree = "<group>"; };
+		C7D56D6019E0D36800741F23 /* icon_80_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_80_80.png; path = ../ghit/app_icons/icon_80_80.png; sourceTree = "<group>"; };
+		C7D56D6119E0D36800741F23 /* icon_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_120x120.png; path = ../ghit/app_icons/icon_120x120.png; sourceTree = "<group>"; };
+		C7D56D6219E0D36800741F23 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = ../ghit/app_icons/logo.png; sourceTree = "<group>"; };
+		C7D56D6319E0D36800741F23 /* repo_private.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = repo_private.png; path = ../ghit/app_icons/repo_private.png; sourceTree = "<group>"; };
+		C7D56D6419E0D36800741F23 /* repo_public.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = repo_public.png; path = ../ghit/app_icons/repo_public.png; sourceTree = "<group>"; };
+		C7D56D6519E0D36800741F23 /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings_icon.png; path = ../ghit/app_icons/settings_icon.png; sourceTree = "<group>"; };
+		C7D56D6619E0D36800741F23 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../ghit/app_icons/settings.png; sourceTree = "<group>"; };
 		C7E6B61519DF59220056356E /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = MMMarkdown/MMMarkdown.xcodeproj; sourceTree = SOURCE_ROOT; };
 		C7F78BDD19D6460A00BACEBE /* WXMWIssueDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMWIssueDetailView.h; sourceTree = "<group>"; };
 		C7F78BDE19D6460A00BACEBE /* WXMWIssueDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMWIssueDetailView.m; sourceTree = "<group>"; };
@@ -189,8 +193,8 @@
 				C7CBC1B519DE6D8B001E3AC4 /* icon_58x50.png */,
 				C7CBC1B419DE6D7E001E3AC4 /* icon_80_80.png */,
 				C7CBC1B319DE6D33001E3AC4 /* icon_120x120.png */,
-				C737D68619D0DA6D00687EBB /* ghit-beta */,
-				C737D6A519D0DA6D00687EBB /* ghit-betaTests */,
+				C737D68619D0DA6D00687EBB /* ghit */,
+				C737D6A519D0DA6D00687EBB /* ghitTests */,
 				C737D67F19D0DA6D00687EBB /* Frameworks */,
 				C737D67E19D0DA6D00687EBB /* Products */,
 				D52ACDC8D2AA4883BA3DAE1D /* Pods.xcconfig */,
@@ -200,8 +204,8 @@
 		C737D67E19D0DA6D00687EBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C737D67D19D0DA6D00687EBB /* ghit-beta.app */,
-				C737D69E19D0DA6D00687EBB /* ghit-betaTests.xctest */,
+				C737D67D19D0DA6D00687EBB /* ghit.app */,
+				C737D69E19D0DA6D00687EBB /* ghitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,7 +223,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C737D68619D0DA6D00687EBB /* ghit-beta */ = {
+		C737D68619D0DA6D00687EBB /* ghit */ = {
 			isa = PBXGroup;
 			children = (
 				C7E6B61519DF59220056356E /* MMMarkdown.xcodeproj */,
@@ -258,34 +262,34 @@
 				C7CBC1B819DE6F39001E3AC4 /* Images-2.xcassets */,
 				C737D68719D0DA6D00687EBB /* Supporting Files */,
 			);
-			path = "ghit-beta";
+			path = ghit;
 			sourceTree = "<group>";
 		};
 		C737D68719D0DA6D00687EBB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				C737D76919D21D7400687EBB /* images */,
-				C737D68819D0DA6D00687EBB /* ghit-beta-Info.plist */,
+				C737D68819D0DA6D00687EBB /* ghit-Info.plist */,
 				C737D68919D0DA6D00687EBB /* InfoPlist.strings */,
 				C737D68C19D0DA6D00687EBB /* main.m */,
-				C737D68E19D0DA6D00687EBB /* ghit-beta-Prefix.pch */,
+				C737D68E19D0DA6D00687EBB /* ghit-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C737D6A519D0DA6D00687EBB /* ghit-betaTests */ = {
+		C737D6A519D0DA6D00687EBB /* ghitTests */ = {
 			isa = PBXGroup;
 			children = (
 				C737D6AB19D0DA6D00687EBB /* ghit_betaTests.m */,
 				C737D6A619D0DA6D00687EBB /* Supporting Files */,
 			);
-			path = "ghit-betaTests";
+			path = ghitTests;
 			sourceTree = "<group>";
 		};
 		C737D6A619D0DA6D00687EBB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C737D6A719D0DA6D00687EBB /* ghit-betaTests-Info.plist */,
+				C737D6A719D0DA6D00687EBB /* ghitTests-Info.plist */,
 				C737D6A819D0DA6D00687EBB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -294,18 +298,20 @@
 		C737D76919D21D7400687EBB /* images */ = {
 			isa = PBXGroup;
 			children = (
-				C7D05A0619DF850600D46EE2 /* bar_bg_dk.png */,
-				C7D05A0719DF850600D46EE2 /* bar_bg_lt.png */,
-				C7D05A0819DF850600D46EE2 /* bar_logo.png */,
-				C7D05A0919DF850600D46EE2 /* Default-568h@2x.png */,
-				C7D05A0A19DF850600D46EE2 /* Default@2x.png */,
-				C7D05A0B19DF850600D46EE2 /* icon_58x50.png */,
-				C7D05A0C19DF850600D46EE2 /* icon_80_80.png */,
-				C7D05A0D19DF850600D46EE2 /* icon_120x120.png */,
-				C7D05A2919E0B22700D46EE2 /* logo.png */,
-				C7D05A0F19DF850600D46EE2 /* repo_private.png */,
-				C7D05A1019DF850600D46EE2 /* repo_public.png */,
-				C7D05A1119DF850600D46EE2 /* settings.png */,
+				C7D56D5919E0D36800741F23 /* bar_bg_dk.png */,
+				C7D56D5A19E0D36800741F23 /* bar_bg_lt.png */,
+				C7D56D5B19E0D36800741F23 /* bar_logo.png */,
+				C7D56D5C19E0D36800741F23 /* Default-568h@2x.png */,
+				C7D56D5D19E0D36800741F23 /* Default@2x.png */,
+				C7D56D5E19E0D36800741F23 /* for_gh.png */,
+				C7D56D5F19E0D36800741F23 /* icon_58x50.png */,
+				C7D56D6019E0D36800741F23 /* icon_80_80.png */,
+				C7D56D6119E0D36800741F23 /* icon_120x120.png */,
+				C7D56D6219E0D36800741F23 /* logo.png */,
+				C7D56D6319E0D36800741F23 /* repo_private.png */,
+				C7D56D6419E0D36800741F23 /* repo_public.png */,
+				C7D56D6519E0D36800741F23 /* settings_icon.png */,
+				C7D56D6619E0D36800741F23 /* settings.png */,
 			);
 			name = images;
 			path = ../../../../../Desktop/images;
@@ -325,9 +331,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C737D67C19D0DA6D00687EBB /* ghit-beta */ = {
+		C737D67C19D0DA6D00687EBB /* ghit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C737D6AF19D0DA6D00687EBB /* Build configuration list for PBXNativeTarget "ghit-beta" */;
+			buildConfigurationList = C737D6AF19D0DA6D00687EBB /* Build configuration list for PBXNativeTarget "ghit" */;
 			buildPhases = (
 				3C57A5E7196A4312AE5B3C79 /* Check Pods Manifest.lock */,
 				C737D67919D0DA6D00687EBB /* Sources */,
@@ -339,14 +345,14 @@
 			);
 			dependencies = (
 			);
-			name = "ghit-beta";
-			productName = "ghit-beta";
-			productReference = C737D67D19D0DA6D00687EBB /* ghit-beta.app */;
+			name = ghit;
+			productName = ghit;
+			productReference = C737D67D19D0DA6D00687EBB /* ghit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C737D69D19D0DA6D00687EBB /* ghit-betaTests */ = {
+		C737D69D19D0DA6D00687EBB /* ghitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C737D6B219D0DA6D00687EBB /* Build configuration list for PBXNativeTarget "ghit-betaTests" */;
+			buildConfigurationList = C737D6B219D0DA6D00687EBB /* Build configuration list for PBXNativeTarget "ghitTests" */;
 			buildPhases = (
 				C737D69A19D0DA6D00687EBB /* Sources */,
 				C737D69B19D0DA6D00687EBB /* Frameworks */,
@@ -357,9 +363,9 @@
 			dependencies = (
 				C737D6A419D0DA6D00687EBB /* PBXTargetDependency */,
 			);
-			name = "ghit-betaTests";
-			productName = "ghit-betaTests";
-			productReference = C737D69E19D0DA6D00687EBB /* ghit-betaTests.xctest */;
+			name = ghitTests;
+			productName = ghitTests;
+			productReference = C737D69E19D0DA6D00687EBB /* ghitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -399,8 +405,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				C737D67C19D0DA6D00687EBB /* ghit-beta */,
-				C737D69D19D0DA6D00687EBB /* ghit-betaTests */,
+				C737D67C19D0DA6D00687EBB /* ghit */,
+				C737D69D19D0DA6D00687EBB /* ghitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -441,22 +447,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7D05A1D19DF850600D46EE2 /* settings.png in Resources */,
-				C7D05A1319DF850600D46EE2 /* bar_bg_lt.png in Resources */,
+				C7D56D6E19E0D36800741F23 /* icon_80_80.png in Resources */,
+				C7D56D7319E0D36800741F23 /* settings_icon.png in Resources */,
+				C7D56D6819E0D36800741F23 /* bar_bg_lt.png in Resources */,
 				C737D69919D0DA6D00687EBB /* Images.xcassets in Resources */,
-				C7D05A1219DF850600D46EE2 /* bar_bg_dk.png in Resources */,
-				C7D05A1719DF850600D46EE2 /* icon_58x50.png in Resources */,
-				C7D05A1B19DF850600D46EE2 /* repo_private.png in Resources */,
-				C7D05A1619DF850600D46EE2 /* Default@2x.png in Resources */,
-				C7D05A1919DF850600D46EE2 /* icon_120x120.png in Resources */,
+				C7D56D6719E0D36800741F23 /* bar_bg_dk.png in Resources */,
+				C7D56D7019E0D36800741F23 /* logo.png in Resources */,
+				C7D56D7419E0D36800741F23 /* settings.png in Resources */,
+				C7D56D6F19E0D36800741F23 /* icon_120x120.png in Resources */,
+				C7D56D7219E0D36800741F23 /* repo_public.png in Resources */,
+				C7D56D7119E0D36800741F23 /* repo_private.png in Resources */,
+				C7D56D6B19E0D36800741F23 /* Default@2x.png in Resources */,
 				C737D68B19D0DA6D00687EBB /* InfoPlist.strings in Resources */,
 				C7CBC1B919DE6F39001E3AC4 /* Images-2.xcassets in Resources */,
-				C7D05A1819DF850600D46EE2 /* icon_80_80.png in Resources */,
-				C7D05A1C19DF850600D46EE2 /* repo_public.png in Resources */,
-				C7D05A2A19E0B22700D46EE2 /* logo.png in Resources */,
-				C7D05A1519DF850600D46EE2 /* Default-568h@2x.png in Resources */,
+				C7D56D6A19E0D36800741F23 /* Default-568h@2x.png in Resources */,
+				C7D56D6D19E0D36800741F23 /* icon_58x50.png in Resources */,
 				C737D69419D0DA6D00687EBB /* Main.storyboard in Resources */,
-				C7D05A1419DF850600D46EE2 /* bar_logo.png in Resources */,
+				C7D56D6C19E0D36800741F23 /* for_gh.png in Resources */,
+				C7D56D6919E0D36800741F23 /* bar_logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,7 +548,7 @@
 /* Begin PBXTargetDependency section */
 		C737D6A419D0DA6D00687EBB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C737D67C19D0DA6D00687EBB /* ghit-beta */;
+			target = C737D67C19D0DA6D00687EBB /* ghit */;
 			targetProxy = C737D6A319D0DA6D00687EBB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -652,7 +660,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ghit-beta/ghit-beta-Prefix.pch";
+				GCC_PREFIX_HEADER = "ghit/ghit-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers\"",
 					"\"${PODS_ROOT}/Headers/AFNetworking\"",
@@ -663,7 +671,7 @@
 					"\"${PODS_ROOT}/Headers/ReactiveCocoa/ReactiveCocoa\"",
 					"$(CONFIGURATION_BUILD_DIR)/MMMarkdown-iOS/public/",
 				);
-				INFOPLIST_FILE = "ghit-beta/ghit-beta-Info.plist";
+				INFOPLIST_FILE = "ghit/ghit-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
@@ -683,7 +691,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ghit-beta/ghit-beta-Prefix.pch";
+				GCC_PREFIX_HEADER = "ghit/ghit-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"\"${PODS_ROOT}/Headers\"",
 					"\"${PODS_ROOT}/Headers/AFNetworking\"",
@@ -694,7 +702,7 @@
 					"\"${PODS_ROOT}/Headers/ReactiveCocoa/ReactiveCocoa\"",
 					"$(CONFIGURATION_BUILD_DIR)/MMMarkdown-iOS/public/",
 				);
-				INFOPLIST_FILE = "ghit-beta/ghit-beta-Info.plist";
+				INFOPLIST_FILE = "ghit/ghit-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
@@ -708,19 +716,19 @@
 		C737D6B319D0DA6D00687EBB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ghit-beta.app/ghit-beta";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ghit.app/ghit";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ghit-beta/ghit-beta-Prefix.pch";
+				GCC_PREFIX_HEADER = "ghit/ghit-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "ghit-betaTests/ghit-betaTests-Info.plist";
+				INFOPLIST_FILE = "ghitTests/ghitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -730,15 +738,15 @@
 		C737D6B419D0DA6D00687EBB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ghit-beta.app/ghit-beta";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ghit.app/ghit";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ghit-beta/ghit-beta-Prefix.pch";
-				INFOPLIST_FILE = "ghit-betaTests/ghit-betaTests-Info.plist";
+				GCC_PREFIX_HEADER = "ghit/ghit-Prefix.pch";
+				INFOPLIST_FILE = "ghitTests/ghitTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -757,7 +765,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C737D6AF19D0DA6D00687EBB /* Build configuration list for PBXNativeTarget "ghit-beta" */ = {
+		C737D6AF19D0DA6D00687EBB /* Build configuration list for PBXNativeTarget "ghit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C737D6B019D0DA6D00687EBB /* Debug */,
@@ -766,7 +774,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C737D6B219D0DA6D00687EBB /* Build configuration list for PBXNativeTarget "ghit-betaTests" */ = {
+		C737D6B219D0DA6D00687EBB /* Build configuration list for PBXNativeTarget "ghitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C737D6B319D0DA6D00687EBB /* Debug */,
