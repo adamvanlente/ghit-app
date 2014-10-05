@@ -201,6 +201,9 @@
     _closeButtonLabel.hidden = NO;
     _privateReposLabel.hidden = NO;
     _privateReposSwitch.hidden = NO;
+    _commitImg.hidden = YES;
+
+    
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.5);
     dispatch_after(delay, dispatch_get_main_queue(), ^(void){
         [self updateProfilePhoto];
@@ -221,6 +224,12 @@
     _closeButtonLabel.hidden = YES;
     _privateReposLabel.hidden = YES;
     _privateReposSwitch.hidden = YES;
+    _commitImg.hidden = NO;
+    
+    // Set the logo image.
+    UIImage *commitImg = [UIImage imageNamed:@"commits"];
+    _commitImg.image = commitImg;
+    
 }
 
 // Toggle whether or not user will see hidden issues.

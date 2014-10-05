@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *privateReposSwitch;
 - (IBAction)togglePrivateRepos:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *privateReposLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *commitImg;
 
 
 - (IBAction)toggleShowClosedIssues:(id)sender;

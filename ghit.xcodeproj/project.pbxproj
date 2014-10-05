@@ -49,6 +49,7 @@
 		C7D56D7219E0D36800741F23 /* repo_public.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6419E0D36800741F23 /* repo_public.png */; };
 		C7D56D7319E0D36800741F23 /* settings_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6519E0D36800741F23 /* settings_icon.png */; };
 		C7D56D7419E0D36800741F23 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D6619E0D36800741F23 /* settings.png */; };
+		C7D56D7719E0F9C700741F23 /* commits.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D7619E0F9C700741F23 /* commits.png */; };
 		C7E6B62419DF59440056356E /* libMMMarkdown-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E6B61F19DF59220056356E /* libMMMarkdown-iOS.a */; };
 		C7F78BDF19D6460A00BACEBE /* WXMWIssueDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F78BDE19D6460A00BACEBE /* WXMWIssueDetailView.m */; };
 /* End PBXBuildFile section */
@@ -155,6 +156,7 @@
 		C7D56D6419E0D36800741F23 /* repo_public.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = repo_public.png; path = ../ghit/app_icons/repo_public.png; sourceTree = "<group>"; };
 		C7D56D6519E0D36800741F23 /* settings_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings_icon.png; path = ../ghit/app_icons/settings_icon.png; sourceTree = "<group>"; };
 		C7D56D6619E0D36800741F23 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../ghit/app_icons/settings.png; sourceTree = "<group>"; };
+		C7D56D7619E0F9C700741F23 /* commits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = commits.png; path = ../ghit/app_icons/commits.png; sourceTree = "<group>"; };
 		C7E6B61519DF59220056356E /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = MMMarkdown/MMMarkdown.xcodeproj; sourceTree = SOURCE_ROOT; };
 		C7F78BDD19D6460A00BACEBE /* WXMWIssueDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMWIssueDetailView.h; sourceTree = "<group>"; };
 		C7F78BDE19D6460A00BACEBE /* WXMWIssueDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMWIssueDetailView.m; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				C7D56D5919E0D36800741F23 /* bar_bg_dk.png */,
 				C7D56D5A19E0D36800741F23 /* bar_bg_lt.png */,
 				C7D56D5B19E0D36800741F23 /* bar_logo.png */,
+				C7D56D7619E0F9C700741F23 /* commits.png */,
 				C7D56D5C19E0D36800741F23 /* Default-568h@2x.png */,
 				C7D56D5D19E0D36800741F23 /* Default@2x.png */,
 				C7D56D5E19E0D36800741F23 /* for_gh.png */,
@@ -453,6 +456,7 @@
 				C737D69919D0DA6D00687EBB /* Images.xcassets in Resources */,
 				C7D56D6719E0D36800741F23 /* bar_bg_dk.png in Resources */,
 				C7D56D7019E0D36800741F23 /* logo.png in Resources */,
+				C7D56D7719E0F9C700741F23 /* commits.png in Resources */,
 				C7D56D7419E0D36800741F23 /* settings.png in Resources */,
 				C7D56D6F19E0D36800741F23 /* icon_120x120.png in Resources */,
 				C7D56D7219E0D36800741F23 /* repo_public.png in Resources */,
