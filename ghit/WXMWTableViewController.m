@@ -101,8 +101,6 @@ UIRefreshControl *refreshControl;
                            [self.tableView reloadData];
                            [refreshControl endRefreshing];
                        });
-        
-        
     }];
 }
 

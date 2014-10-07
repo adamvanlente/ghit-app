@@ -7,8 +7,11 @@
 //
 
 #import "Utils.h"
+#import "Config.h"
 
 @implementation Utils
+
+NSMutableData *_responseData;
 
 // Create a UI Color given a hex color.
 +(UIColor*)hexColor:(NSString*)hex
@@ -39,6 +42,57 @@
                            green:((float) g / 255.0f)
                             blue:((float) b / 255.0f)
                            alpha:1.0f];
+}
+
++ (void)storeUser:(NSString *)email name:(NSString *)name username:(NSString *)username publicCount:(NSUInteger)publicCount privateCount:(NSUInteger)privateCount
+{
+
+    NSMutableDictionary *config = [Config ghCredentials];
+    NSString *baseUrl = [config objectForKey:@"storageUrl"];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/%@/%lu/%lu", baseUrl, email, name, username, publicCount, privateCount];
+
+    NSURL *reqUrl = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLRequest * urlRequest = [NSURLRequest requestWithURL:reqUrl];
+    
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                          returningResponse:&response
+                                                      error:&error];
+}
+
+#pragma mark NSURLConnection Delegate Methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    // A response has been received, this is where we initialize the instance var you created
+    // so that we can append data to it in the didReceiveData method
+    // Furthermore, this method is called each time there is a redirect so reinitializing it
+    // also serves to clear it
+    _responseData = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    // Append the new data to the instance variable you declared
+    [_responseData appendData:data];
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+                  willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+    // Return nil to indicate not necessary to store a cached response for this connection
+    return nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // The request is complete and data has been received
+    // You can parse the stuff in your instance variable now
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    // The request has failed for some reason!
+    // Check the error var
 }
 
 + (id)alloc {

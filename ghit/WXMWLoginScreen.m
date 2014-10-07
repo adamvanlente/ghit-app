@@ -33,6 +33,17 @@
     
     // Set labels based on whether the user is logged in or not.
     [self setToggleSwitches];
+    
+    // Set the ui to its initial state.
+    [self initUi];
+    
+    // Determine if user is logged in or out.
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"profile_photo"]) {
+        [self displayButtonsForLoggedInStatus];
+    } else {
+        [self displayButtonsForLoggedOutStatus];
+    }
 }
 
 - (void)setToggleSwitches
@@ -60,16 +71,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    // Set the ui to its initial state.
-    [self initUi];
-
-    // Determine if user is logged in or out.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"profile_photo"]) {
-        [self displayButtonsForLoggedInStatus];
-    } else {
-        [self displayButtonsForLoggedOutStatus];
-    }
+//
 }
 
 // Set the UI to its initial state.
@@ -135,6 +137,7 @@
 // Save the user details as they are logged in.
 - (void)saveUser:(OCTClient *)client
 {
+
     // Prepare to store some items in defaults.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -149,8 +152,16 @@
     [defaults setObject:token forKey:@"token"];
     [defaults setObject:userName forKey:@"user_name"];
     [defaults setObject:imgUrl forKey:@"profile_photo"];
-    
+   
     [defaults synchronize];
+    
+    // Store a user as they sign in.
+    NSString *email = client.user.email;
+    NSString *name = client.user.name;
+    NSUInteger publicCount = client.user.publicRepoCount;
+    NSUInteger privateCount = client.user.privateRepoCount;
+    
+    [Utils storeUser:email name:name username:userName publicCount:publicCount privateCount:privateCount];
 }
 
 // Set the UI as a user is logging in.
