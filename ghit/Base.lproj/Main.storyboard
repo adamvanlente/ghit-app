@@ -29,7 +29,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Rg-fQ-pc0">
-                                <rect key="frame" x="115" y="512" width="90" height="36"/>
+                                <rect key="frame" x="115" y="493" width="90" height="36"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="26"/>
                                 <state key="normal" title="logout">
                                     <color key="titleColor" red="0.93855628189999996" green="0.38354478600000003" blue="0.40391924099999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,37 +42,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Huw-Oa-iKz">
                                 <rect key="frame" x="35" y="63" width="250" height="116"/>
                             </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BOx-OI-Pvj">
-                                <rect key="frame" x="251" y="292" width="51" height="31"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="onTintColor" red="0.42608015310000003" green="0.81331712369999998" blue="0.40923771050000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="toggleShowClosedIssues:" destination="C2U-cN-usm" eventType="valueChanged" id="r6M-hl-DD2"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="closed issues" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8l-wT-3tV">
-                                <rect key="frame" x="16" y="297" width="157" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e4f-5d-5Fm">
-                                <rect key="frame" x="251" y="335" width="51" height="31"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="onTintColor" red="0.42608015310000003" green="0.81331712369999998" blue="0.40923771050000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="togglePrivateRepos:" destination="C2U-cN-usm" eventType="valueChanged" id="bQC-dw-vhK"/>
-                                    <action selector="toggleShowClosedIssues:" destination="C2U-cN-usm" eventType="valueChanged" id="4nC-en-CpS"/>
-                                </connections>
-                            </switch>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="private repos visible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwq-4W-sAf">
-                                <rect key="frame" x="16" y="340" width="157" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c6r-MA-gz7">
                                 <rect key="frame" x="132" y="400" width="57" height="56"/>
                             </imageView>
@@ -91,34 +60,65 @@
                                 <color key="textColor" red="0.42029493080000002" green="0.54055586529999999" blue="0.82531489160000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuK-if-5jN">
-                                <rect key="frame" x="0.0" y="217" width="320" height="55"/>
-                                <color key="backgroundColor" red="0.42608015310000003" green="0.81331712369999998" blue="0.40923771050000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="closed issues" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWu-3v-jo0">
+                                <rect key="frame" x="16" y="322" width="157" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0M0-dY-ddL">
+                                <rect key="frame" x="251" y="360" width="51" height="31"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="onTintColor" red="0.74522431720881777" green="0.88261320153061229" blue="0.72537089186230785" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="togglePrivateRepos:" destination="C2U-cN-usm" eventType="valueChanged" id="f0a-WE-Zl8"/>
+                                    <action selector="toggleShowClosedIssues:" destination="C2U-cN-usm" eventType="valueChanged" id="gRZ-Oy-ppY"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="private repos visible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAe-Nj-PfJ">
+                                <rect key="frame" x="16" y="365" width="157" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXY-V8-P1c">
+                                <rect key="frame" x="0.0" y="222" width="320" height="55"/>
+                                <color key="backgroundColor" red="0.42029493080000002" green="0.54055586529999999" blue="0.82531489160000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
                                 <state key="normal" title="go to repos">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="PnV-bs-vsB" kind="modal" modalTransitionStyle="crossDissolve" id="LAe-6D-1I5"/>
+                                    <segue destination="PnV-bs-vsB" kind="modal" modalTransitionStyle="crossDissolve" id="ix6-3x-t1l"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ab4-ip-ub4">
+                                <rect key="frame" x="251" y="317" width="51" height="31"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="onTintColor" red="0.74522431720881777" green="0.88261320153061229" blue="0.72537089186230785" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="thumbTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="toggleShowClosedIssues:" destination="C2U-cN-usm" eventType="valueChanged" id="Arq-7k-S0I"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="closeButtonLabel" destination="a8l-wT-3tV" id="u8L-bd-Wyf"/>
-                        <outlet property="closedIssuesButton" destination="BOx-OI-Pvj" id="SDQ-bd-J7m"/>
+                        <outlet property="closeButtonLabel" destination="GWu-3v-jo0" id="u7K-uj-d5T"/>
+                        <outlet property="closedIssuesButton" destination="Ab4-ip-ub4" id="INk-ue-Rnd"/>
                         <outlet property="commitImg" destination="T5T-8O-JpL" id="DX9-Wp-66o"/>
                         <outlet property="loggingInMessage" destination="r3Z-FM-rxl" id="0bh-wJ-VBm"/>
                         <outlet property="loginButton" destination="Afs-No-Qhi" id="y2I-BV-yzq"/>
                         <outlet property="logoImageView" destination="Huw-Oa-iKz" id="390-iS-8rG"/>
                         <outlet property="logoutButton" destination="2Rg-fQ-pc0" id="Kce-nH-z8b"/>
-                        <outlet property="privateReposLabel" destination="Gwq-4W-sAf" id="ptM-hS-ZaJ"/>
-                        <outlet property="privateReposSwitch" destination="e4f-5d-5Fm" id="Nz1-KY-6H6"/>
+                        <outlet property="privateReposLabel" destination="UAe-Nj-PfJ" id="jeR-qN-GhY"/>
+                        <outlet property="privateReposSwitch" destination="0M0-dY-ddL" id="LvV-ZJ-XUv"/>
                         <outlet property="profilePic" destination="c6r-MA-gz7" id="7vX-k4-CFd"/>
                         <outlet property="userNameLabel" destination="B9M-TH-ZlP" id="5KE-OP-0Cg"/>
-                        <outlet property="viewRepoButton" destination="ZuK-if-5jN" id="SsO-Np-vL6"/>
+                        <outlet property="viewRepoButton" destination="PXY-V8-P1c" id="fCR-xU-yHi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMS-8x-vc6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -384,25 +384,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaH-oE-h2y">
-                                <rect key="frame" x="26" y="84" width="266" height="33"/>
+                                <rect key="frame" x="11" y="84" width="297" height="33"/>
                                 <color key="backgroundColor" red="0.93624441960000004" green="0.93624441960000004" blue="0.93624441960000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6AG-4n-Q9l">
-                                <rect key="frame" x="26" y="128" width="266" height="81"/>
+                                <rect key="frame" x="11" y="128" width="297" height="81"/>
                                 <color key="backgroundColor" red="0.93624441960000004" green="0.93624441960000004" blue="0.93624441960000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Issue name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K6E-oJ-yLv">
-                                <rect key="frame" x="34" y="84" width="261" height="33"/>
+                                <rect key="frame" x="34" y="84" width="274" height="33"/>
                                 <rect key="contentStretch" x="1.3877787807814457e-17" y="0.0" width="1" height="1"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fIR-q9-pGU">
-                                <rect key="frame" x="26" y="219" width="130" height="30"/>
+                                <rect key="frame" x="11" y="219" width="130" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="labels">
@@ -414,7 +414,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfZ-Ux-pS7">
-                                <rect key="frame" x="164" y="219" width="128" height="30"/>
+                                <rect key="frame" x="180" y="219" width="128" height="30"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="assignee">
@@ -437,7 +437,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeD-zS-Ikt">
-                                <rect key="frame" x="26" y="265" width="269" height="41"/>
+                                <rect key="frame" x="11" y="265" width="297" height="41"/>
                                 <color key="backgroundColor" red="0.2365584043" green="0.71305006380000002" blue="0.4349024487" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="add new issue">
@@ -448,20 +448,8 @@
                                     <action selector="addNewIssue:" destination="fqV-R5-vUE" eventType="touchUpInside" id="L5l-zU-zrt"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdM-wa-1LR">
-                                <rect key="frame" x="164" y="265" width="131" height="41"/>
-                                <color key="backgroundColor" red="0.2365584043" green="0.71305006380000002" blue="0.4349024487" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="update">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addNewIssue:" destination="fqV-R5-vUE" eventType="touchUpInside" id="N4q-nl-YIZ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOf-r1-FTn">
-                                <rect key="frame" x="26" y="265" width="130" height="41"/>
+                                <rect key="frame" x="11" y="265" width="130" height="41"/>
                                 <color key="backgroundColor" red="0.93855628189999996" green="0.38354478600000003" blue="0.40391924099999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                 <state key="normal" title="update &amp; close">
@@ -478,6 +466,18 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdM-wa-1LR">
+                                <rect key="frame" x="177" y="265" width="131" height="41"/>
+                                <color key="backgroundColor" red="0.2365584043" green="0.71305006380000002" blue="0.4349024487" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="update">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewIssue:" destination="fqV-R5-vUE" eventType="touchUpInside" id="N4q-nl-YIZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -740,24 +740,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbS-cT-Va7">
-                                <rect key="frame" x="20" y="266" width="280" height="40"/>
-                                <color key="backgroundColor" red="0.42608015310000003" green="0.81331712369999998" blue="0.40923771050000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="add comment">
-                                    <color key="titleColor" red="0.93624441960000004" green="0.93624441960000004" blue="0.93624441960000004" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="newCommentAdd:" destination="U6s-yF-NlC" eventType="touchUpInside" id="16T-e5-NRr"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqV-xL-bHf">
-                                <rect key="frame" x="20" y="77" width="280" height="166"/>
-                                <color key="backgroundColor" red="0.93624441960000004" green="0.93624441960000004" blue="0.93624441960000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a comment" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTP-yI-zmP">
                                 <rect key="frame" x="0.0" y="22" width="320" height="42"/>
                                 <color key="backgroundColor" red="0.42029493080000002" green="0.54055586529999999" blue="0.82531489160000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -776,8 +758,26 @@
                                     <action selector="newCommentCancel:" destination="U6s-yF-NlC" eventType="touchUpInside" id="QyK-b7-tlz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbS-cT-Va7">
+                                <rect key="frame" x="9" y="267" width="302" height="40"/>
+                                <color key="backgroundColor" red="0.42608015310000003" green="0.81331712369999998" blue="0.40923771050000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="add comment">
+                                    <color key="titleColor" red="0.93624441960000004" green="0.93624441960000004" blue="0.93624441960000004" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newCommentAdd:" destination="U6s-yF-NlC" eventType="touchUpInside" id="16T-e5-NRr"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqV-xL-bHf">
+                                <rect key="frame" x="9" y="78" width="302" height="166"/>
+                                <color key="backgroundColor" red="0.93624441960000004" green="0.93624441960000004" blue="0.93624441960000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="comments are parsed as markdown" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nc-xI-I64">
-                                <rect key="frame" x="20" y="243" width="280" height="21"/>
+                                <rect key="frame" x="17" y="244" width="280" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" red="0.70699139030612246" green="0.70699139030612246" blue="0.70699139030612246" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

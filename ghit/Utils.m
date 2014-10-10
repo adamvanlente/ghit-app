@@ -63,6 +63,19 @@ NSMutableData *_responseData;
                                                       error:&error];
 }
 
++ (NSString *)getFontColorForBackgroundColor:(UIColor *)color
+{
+    const CGFloat *componentColors = CGColorGetComponents(color.CGColor);
+
+    CGFloat colorBrightness = ((componentColors[0] * 299) + (componentColors[1] * 587) + (componentColors[2] * 114)) / 1000;
+    
+    if (colorBrightness < 0.6) {
+        return @"FFFFFF";
+    } else {
+        return @"333333";
+    }
+}
+
 #pragma mark NSURLConnection Delegate Methods
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

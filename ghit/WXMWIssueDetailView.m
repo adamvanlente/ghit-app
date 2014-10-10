@@ -31,40 +31,47 @@ BOOL firstLoad = YES;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 
+    // Load the currently viewing issue to the screen.
     [self loadCurrentIssue];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    // If it is not first load, a new issue has been created, reload current issue.
     if (!firstLoad) {
         [self loadNewIssue];
     }
     firstLoad = NO;
-
 }
 
+// Fetches updated details of an issue and loads it to the screen.
 - (void)loadNewIssue
 {
+    // Get current repo index to use in the issue request.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *currentRepoName = [defaults objectForKey:@"current_repo_name"];
     NSString *userName = [defaults objectForKey:@"user_name"];
     id objectId = [defaults objectForKey:@"current_repo_index"];
     
+    // Create client for the request.
     NSString *token = [defaults objectForKey:@"token"];
     OCTUser *user = [OCTUser userWithRawLogin:userName server:OCTServer.dotComServer];
     OCTClient *client = [OCTClient authenticatedClientWithUser:user token:token];
     
+    // The request - created specifically for an issue that has just been updated.
     RACSignal *updatedIssueRequest = [client fetchIndividualIssueFromRepoWithName:currentRepoName owner:userName objectId:objectId];
-
     [updatedIssueRequest subscribeNext:^(OCTIssue *issue) {
 
+               // Once the issue is returned (there will only be one), render it to the screen.
                dispatch_async(dispatch_get_main_queue(),
-                       ^{  //back on main thread
+                       ^{
+                           // Store the current issue.
                            NSData *issueEncoded = [NSKeyedArchiver archivedDataWithRootObject:issue];
                            [defaults setObject:issueEncoded forKey:@"currently_viewing_issue"];
                            [defaults synchronize];
+                           
+                           // Render issue to the screen.
                            [self setIssueToScreen:issue];
                        });
     } error:^(NSError *error) {
@@ -76,6 +83,8 @@ BOOL firstLoad = YES;
     
 }
 
+// Loads the current issue.  When this is called, issue has been stored in previous step,
+// so there is no need to make an http request to get its details.
 - (void)loadCurrentIssue
 {
     // Get the current issue and repo name from defaults.
@@ -86,17 +95,21 @@ BOOL firstLoad = YES;
     [defaults setObject:objectId forKey:@"current_repo_index"];
     [defaults synchronize];
 
+    // Render the issue to the screen.
     [self setIssueToScreen:issue];
 }
 
+// Takes and OCTIssue object and renders the detail view.
 - (void)setIssueToScreen:(OCTIssue *)issue
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
+    // Get current repo details.
     NSString *userName = [defaults objectForKey:@"user_name"];
     NSString *currentRepoName = [defaults objectForKey:@"current_repo_name"];
     NSString *repoTitle = [NSString stringWithFormat:@"%@/%@", userName, currentRepoName];
     
+    // Get the number of comments
     NSNumber *comments = issue.comments;
     NSString *commentCount = [comments stringValue];
 
@@ -117,28 +130,34 @@ BOOL firstLoad = YES;
     [defaults synchronize];
 }
 
+// Set labels for current issue and repo.
 - (void)setIssueTitles:(NSString*)currentRepoName title:(NSString*)title
 {
-    // Set labels for current issue and repo.
     _parentRepoLabel.text = currentRepoName;
     _issueTitleLabel.text = title;
 }
 
+// Set the description/body of the issue.
 - (void)setIssueDescription:(OCTIssue*)issue
 {
+    // Default string if no description exists.
     if ([issue.body isEqualToString:@""]) {
         _issueDescLabel.text = @"(no description for issue.)";
     } else {
         
-         NSString *markedDownComment = [MMMarkdown HTMLStringWithMarkdown:issue.body extensions:MMMarkdownExtensionsGitHubFlavored error:NULL];
+        // If string exists, parse as markdown.
+        NSString *markedDownComment = [MMMarkdown HTMLStringWithMarkdown:issue.body extensions:MMMarkdownExtensionsGitHubFlavored error:NULL];
         
+        // Set webview background color.
         [_webViewer setOpaque:NO];
         _webViewer.backgroundColor = [Utils hexColor:@"edecec"];
         
+        // Load description to webview.
         [_webViewer loadHTMLString:[NSString stringWithFormat:@"<style type='text/css'>body { font-family: 'Helvetica Neue', sans-serif; font-size: 14px; font-weight: light; color: #333; } </style>%@", markedDownComment] baseURL:nil];
     }
 }
 
+// Set the issue number label.
 - (void)setIssueNumber:(OCTIssue*)issue
 {
     NSMutableString *issueNumber = [NSMutableString stringWithFormat:@"issue #"];
@@ -147,6 +166,7 @@ BOOL firstLoad = YES;
     _issueNumberLabel.text = issueNumber;
 }
 
+// Set label for the issue state.
 - (void)setIssueState:(OCTIssue*)issue
 {
     if ([issue.state isEqualToString:@"open"]) {
@@ -158,6 +178,7 @@ BOOL firstLoad = YES;
     }
 }
 
+// Set label for issue assignee.
 - (void)setIssueAssignee:(OCTIssue*)issue
 {
     if (issue.assignee) {
@@ -172,6 +193,7 @@ BOOL firstLoad = YES;
     }
 }
 
+// Set list of labels for issue (label as in bug, enhancement, etc).
 - (void)setIssueLabelList:(OCTIssue*)issue
 {
     [[_labelHolderView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
@@ -188,12 +210,16 @@ BOOL firstLoad = YES;
 
         NSString *name = [item objectForKey:@"name"];
         NSString *labelColor = [item objectForKey:@"color"];
+        UIColor *labelBgColor = [Utils hexColor:labelColor];
         CGRect rect = CGRectMake(left, fromTop, 120, 25);
         UILabel *labelLabel = [[UILabel alloc] initWithFrame:rect];
         labelLabel.text = name;
         labelLabel.font = [UIFont systemFontOfSize:12.0];
-        labelLabel.textColor = [Utils hexColor:@"FFFFFF"];
-        [labelLabel setBackgroundColor: [Utils hexColor:labelColor]];
+
+        NSString *fontColor = [Utils getFontColorForBackgroundColor:labelBgColor];
+        labelLabel.textColor = [Utils hexColor:fontColor];
+
+        [labelLabel setBackgroundColor: labelBgColor];
         
         labelLabel.textAlignment = NSTextAlignmentCenter;
         

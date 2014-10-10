@@ -174,8 +174,9 @@ UIRefreshControl *refreshControl;
     
     OCTRepository *repoItem = [NSKeyedUnarchiver unarchiveObjectWithData:repoList[row]];
     
-    NSString *userName = [defaults objectForKey:@"user_name"];
-    NSString *repoTitle = [NSString stringWithFormat:@"%@/%@", userName, repoItem.name];
+    NSString *repoOwner = repoItem.ownerLogin;
+
+    NSString *repoTitle = [NSString stringWithFormat:@"%@/%@", repoOwner, repoItem.name];
     
     _currentRepoNameLabel.text = repoTitle;
 }

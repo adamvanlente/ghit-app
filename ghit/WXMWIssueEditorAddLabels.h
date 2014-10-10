@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface WXMWIssueEditorAddLabels : UIViewController
+
+// Outleys for associating labels with an issue.
 @property (weak, nonatomic) IBOutlet UIScrollView *labelHolder;
 @property (weak, nonatomic) IBOutlet UIButton *addLabelsButton;
-- (IBAction)addLabelsToIssue:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
-- (IBAction)cancelAddingLabelsToIssue:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
+
+// Actions for editing labels associated with an issue.
+- (IBAction)addLabelsToIssue:(id)sender;
+- (IBAction)cancelAddingLabelsToIssue:(id)sender;
 
 @end

@@ -10,10 +10,9 @@
 
 @interface WXMWAddComments : UIViewController
 
+// Outlets for adding comments.
 @property (weak, nonatomic) IBOutlet UITextView *commentTextField;
-
 - (IBAction)newCommentAdd:(id)sender;
-
 - (IBAction)newCommentCancel:(id)sender;
 
 @end

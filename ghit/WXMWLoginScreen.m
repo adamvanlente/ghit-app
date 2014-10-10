@@ -237,9 +237,14 @@
     
     // Delay the loading of the profile image slightly, or it will hold up the other actions.
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.5);
-    dispatch_after(delay, dispatch_get_main_queue(), ^(void){
-        [self updateProfilePhoto];
-    });
+
+    // Load profile photo
+    // dispatch_after(delay, dispatch_get_main_queue(), ^(void){
+        // currently disabled
+        // TODO(adamvanlente)
+        //     this just takes too long.  Alternatives?  Tried loading smallest version.
+        // [self updateProfilePhoto];
+    //});
 }
 
 // Set UI to indicate that user has logged out.
