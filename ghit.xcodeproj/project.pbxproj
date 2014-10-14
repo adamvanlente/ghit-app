@@ -34,6 +34,9 @@
 		C737D71B19D1C72E00687EBB /* WXMWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C737D71A19D1C72E00687EBB /* WXMWTableViewCell.m */; };
 		C7642ECB19D4F63100CE0C1F /* WXMWIssueTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C7642ECA19D4F63100CE0C1F /* WXMWIssueTVC.m */; };
 		C7642ED119D4F70100CE0C1F /* WXMWIssueTVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C7642ED019D4F70100CE0C1F /* WXMWIssueTVCell.m */; };
+		C7AC112B19ED75E400101CE5 /* home_bg_1.png in Resources */ = {isa = PBXBuildFile; fileRef = C7AC112819ED75E400101CE5 /* home_bg_1.png */; };
+		C7AC112C19ED75E400101CE5 /* home_bg_2.png in Resources */ = {isa = PBXBuildFile; fileRef = C7AC112919ED75E400101CE5 /* home_bg_2.png */; };
+		C7AC112D19ED75E400101CE5 /* home_bg_3.png in Resources */ = {isa = PBXBuildFile; fileRef = C7AC112A19ED75E400101CE5 /* home_bg_3.png */; };
 		C7CBC1B919DE6F39001E3AC4 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7CBC1B819DE6F39001E3AC4 /* Images-2.xcassets */; };
 		C7D56D6719E0D36800741F23 /* bar_bg_dk.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5919E0D36800741F23 /* bar_bg_dk.png */; };
 		C7D56D6819E0D36800741F23 /* bar_bg_lt.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D56D5A19E0D36800741F23 /* bar_bg_lt.png */; };
@@ -138,6 +141,9 @@
 		C7642ECA19D4F63100CE0C1F /* WXMWIssueTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMWIssueTVC.m; sourceTree = "<group>"; };
 		C7642ECF19D4F70100CE0C1F /* WXMWIssueTVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXMWIssueTVCell.h; sourceTree = "<group>"; };
 		C7642ED019D4F70100CE0C1F /* WXMWIssueTVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXMWIssueTVCell.m; sourceTree = "<group>"; };
+		C7AC112819ED75E400101CE5 /* home_bg_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_bg_1.png; path = ../ghit/app_icons/home_bg_1.png; sourceTree = "<group>"; };
+		C7AC112919ED75E400101CE5 /* home_bg_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_bg_2.png; path = ../ghit/app_icons/home_bg_2.png; sourceTree = "<group>"; };
+		C7AC112A19ED75E400101CE5 /* home_bg_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home_bg_3.png; path = ../ghit/app_icons/home_bg_3.png; sourceTree = "<group>"; };
 		C7CBC1B319DE6D33001E3AC4 /* icon_120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_120x120.png; sourceTree = "<group>"; };
 		C7CBC1B419DE6D7E001E3AC4 /* icon_80_80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_80_80.png; sourceTree = "<group>"; };
 		C7CBC1B519DE6D8B001E3AC4 /* icon_58x50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_58x50.png; sourceTree = "<group>"; };
@@ -300,6 +306,9 @@
 		C737D76919D21D7400687EBB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C7AC112819ED75E400101CE5 /* home_bg_1.png */,
+				C7AC112919ED75E400101CE5 /* home_bg_2.png */,
+				C7AC112A19ED75E400101CE5 /* home_bg_3.png */,
 				C7D56D5919E0D36800741F23 /* bar_bg_dk.png */,
 				C7D56D5A19E0D36800741F23 /* bar_bg_lt.png */,
 				C7D56D5B19E0D36800741F23 /* bar_logo.png */,
@@ -459,13 +468,16 @@
 				C7D56D7719E0F9C700741F23 /* commits.png in Resources */,
 				C7D56D7419E0D36800741F23 /* settings.png in Resources */,
 				C7D56D6F19E0D36800741F23 /* icon_120x120.png in Resources */,
+				C7AC112D19ED75E400101CE5 /* home_bg_3.png in Resources */,
 				C7D56D7219E0D36800741F23 /* repo_public.png in Resources */,
 				C7D56D7119E0D36800741F23 /* repo_private.png in Resources */,
 				C7D56D6B19E0D36800741F23 /* Default@2x.png in Resources */,
 				C737D68B19D0DA6D00687EBB /* InfoPlist.strings in Resources */,
+				C7AC112B19ED75E400101CE5 /* home_bg_1.png in Resources */,
 				C7CBC1B919DE6F39001E3AC4 /* Images-2.xcassets in Resources */,
 				C7D56D6A19E0D36800741F23 /* Default-568h@2x.png in Resources */,
 				C7D56D6D19E0D36800741F23 /* icon_58x50.png in Resources */,
+				C7AC112C19ED75E400101CE5 /* home_bg_2.png in Resources */,
 				C737D69419D0DA6D00687EBB /* Main.storyboard in Resources */,
 				C7D56D6C19E0D36800741F23 /* for_gh.png in Resources */,
 				C7D56D6919E0D36800741F23 /* bar_logo.png in Resources */,

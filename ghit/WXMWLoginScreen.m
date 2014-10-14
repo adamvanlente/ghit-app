@@ -81,8 +81,15 @@
     [self clearAllButtons];
     
     // Set the background color of the home screen.
-    self.view.backgroundColor = [Utils hexColor:@"edecec"];
-
+//    self.view.backgroundColor = [Utils hexColor:@"edecec"];
+    
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    [[UIImage imageNamed:@"home_bg_2.png"] drawInRect:self.view.bounds];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+    
     // Set the logo image.
     UIImage *logoImg = [UIImage imageNamed:@"logo.png"];
     _logoImageView.image = logoImg;
