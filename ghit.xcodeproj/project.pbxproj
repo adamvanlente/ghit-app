@@ -390,9 +390,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "West by Midwest";
 				TargetAttributes = {
-					C737D67C19D0DA6D00687EBB = {
-						DevelopmentTeam = QJJHS676RB;
-					};
 					C737D69D19D0DA6D00687EBB = {
 						TestTargetID = C737D67C19D0DA6D00687EBB;
 					};
@@ -694,6 +691,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -725,6 +723,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
