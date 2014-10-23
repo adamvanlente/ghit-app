@@ -13,6 +13,7 @@
 
 // Action for logging into github.
 - (IBAction)loginToGithub:(id)sender;
+- (IBAction)localLogin:(id)sender;
 
 // Action to log out of github.
 - (IBAction)logoutOfGithub:(id)sender;
@@ -30,6 +31,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *privateReposLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *commitImg;
 @property (weak, nonatomic) IBOutlet UILabel *loggingInMessage;
+@property (weak, nonatomic) IBOutlet UITextField *userNameText;
+@property (weak, nonatomic) IBOutlet UITextField *passwordText;
+@property (weak, nonatomic) IBOutlet UITextField *authCodeText;
 
 // Method to toggle the visiblity of closed issues.
 - (IBAction)toggleShowClosedIssues:(id)sender;

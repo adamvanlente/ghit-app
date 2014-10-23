@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
     
     // Set labels based on whether the user is logged in or not.
@@ -39,7 +40,10 @@
     
     // Determine if user is logged in or out.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"profile_photo"]) {
+    
+    BOOL loggedIn = [defaults boolForKey:@"logged_in"];
+
+    if (loggedIn) {
         [self displayButtonsForLoggedInStatus];
     } else {
         [self displayButtonsForLoggedOutStatus];
@@ -104,6 +108,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
 // Login in to github.
 - (IBAction)loginToGithub:(id)sender {
 
@@ -112,7 +118,6 @@
     NSString *clientId = [config objectForKey:@"clientId"];
     NSString *clientSecret = [config objectForKey:@"clientSecret"];
     [OCTClient setClientID:clientId clientSecret:clientSecret];
-
     [self messageDuringAuthorization];
     
     // Establish an OCTClient with Octokit.  Client with be authenticated.
@@ -124,12 +129,8 @@
          
          [self saveUser:authenticatedClient];
          
-         // Now that repos have been stored, we can refresh the table view (on the main thread).
-         dispatch_async(dispatch_get_main_queue(),
-                        ^{
-                            // Set UI state to logged in.
-                            [self displayButtonsForLoggedInStatus];
-                        });
+         [self displayButtonsForLoggedInStatus];
+
      } error:^(NSError *error) {
 
          // Error occurred, so user is not logged in.  Show logged out status.
@@ -141,6 +142,92 @@
      }];
 }
 
+- (IBAction)localLogin:(id)sender {
+    
+
+    NSString *userName = _userNameText.text;
+    NSString *password = _passwordText.text;
+    
+    if (_userNameText.text.length == 0 || _passwordText.text.length == 0) {
+        
+        // Show an alert.
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"User/Pass cannot be empty."
+                                                        message:@"Please enter a username and/or password." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        
+    } else {
+        
+        [self messageDuringAuthorization];
+        
+        // Grab the GH credentials from the config file and use to set a OCTClient.
+        NSMutableDictionary *config = [Config ghCredentials];
+        NSString *clientId = [config objectForKey:@"clientId"];
+        NSString *clientSecret = [config objectForKey:@"clientSecret"];
+        [OCTClient setClientID:clientId clientSecret:clientSecret];
+    
+        OCTUser *user = [OCTUser userWithRawLogin:userName server:OCTServer.dotComServer];
+        NSString *otp;
+
+        if (_authCodeText.text.length == 0) {
+            otp = nil;
+        } else {
+            otp = _authCodeText.text;
+        }
+        
+        NSLog(@"%@", otp);
+    
+        [[OCTClient signInAsUser:user password:password oneTimePassword:otp scopes:OCTClientAuthorizationScopesUser]
+
+        subscribeNext:^(OCTClient *authenticatedClient) {
+        
+            [self saveUser:authenticatedClient];
+            
+            
+            // Now that repos have been stored, we can refresh the table view (on the main thread).
+            dispatch_async(dispatch_get_main_queue(),
+                        ^{
+                            // Set UI state to logged in.
+                            [self displayButtonsForLoggedInStatus];
+                        });
+        
+        } error:^(NSError *error) {
+            /// 666 = no user exists
+            dispatch_async(dispatch_get_main_queue(),
+                        ^{
+                        [self displayButtonsForLoggedOutStatus];
+                        
+                        // Incorrect/invalid login credentials.
+                        if (error.code == 666) {
+                            // Show an alert.
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid credentials."
+                                                        message:@"Username or password is incorrect.  Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            [alert show];
+                        }
+                        
+                        if (error.code == 671) {
+                            // Show an alert.
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication required."
+                                                        message:@"Your account requires two step authentication.  Please enter your authentication code." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            [alert show];
+                            
+                            [self displayButtonsForLoggedOutStatus];
+                            _authCodeText.hidden = NO;
+
+                            _userNameText.text = userName;
+                            _passwordText.text = password;
+                            _authCodeText.text = @"";
+                        }
+            
+            
+            
+                        NSLog(@"%@ %ld", error, (long)error.code);
+                        });
+        }];
+        
+    }
+
+}
+
 // Save the user details as they are logged in.
 - (void)saveUser:(OCTClient *)client
 {
@@ -150,15 +237,11 @@
     
     // Grab & store user information.  We'll need this stuff a bunch.
     NSString *token = client.token;
-    NSString *avatarURL = [client.user.avatarURL absoluteString];
-    NSMutableString *imgUrl = [NSMutableString stringWithFormat:avatarURL];
-    [imgUrl appendString:@"&s=120"];
-    
     NSString *userName = client.user.login;
     
     [defaults setObject:token forKey:@"token"];
     [defaults setObject:userName forKey:@"user_name"];
-    [defaults setObject:imgUrl forKey:@"profile_photo"];
+    [defaults setBool:YES forKey:@"logged_in"];
    
     [defaults synchronize];
     
@@ -180,6 +263,9 @@
     _commitImg.hidden = YES;
     _loggingInMessage.hidden = NO;
     _loggingInMessage.text = @"logging in";
+    _userNameText.hidden = YES;
+    _passwordText.hidden = YES;
+    _authCodeText.hidden = YES;
 }
 
 // Log out of github.
@@ -195,20 +281,6 @@
     // Set UI to logged out status.
     [self displayButtonsForLoggedOutStatus];
    
-}
-
-// Update the user's profile photo.
--(void)updateProfilePhoto
-{
-    // Grab the user photo from user defaults, set the photo in the UI.
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *profilePicUrl = [defaults objectForKey:@"profile_photo"];
-    UIImage *profileImg = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:profilePicUrl]]];
-    _profilePic.image = profileImg;
-    
-    // Also set the username underneath the photo.
-    NSString *userName = [defaults objectForKey:@"user_name"];
-    _userNameLabel.text = userName;
 }
 
 // Set all buttons and labels to an empty/cleared state.
@@ -241,17 +313,14 @@
     _privateReposLabel.hidden = NO;
     _privateReposSwitch.hidden = NO;
     _commitImg.hidden = YES;
+    _userNameText.hidden = YES;
+    _passwordText.hidden = YES;
+    _authCodeText.hidden = YES;
+    _authCodeText.text = @"";
     
     // Delay the loading of the profile image slightly, or it will hold up the other actions.
     dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, NSEC_PER_SEC * 0.5);
 
-    // Load profile photo
-    // dispatch_after(delay, dispatch_get_main_queue(), ^(void){
-        // currently disabled
-        // TODO(adamvanlente)
-        //     this just takes too long.  Alternatives?  Tried loading smallest version.
-        // [self updateProfilePhoto];
-    //});
 }
 
 // Set UI to indicate that user has logged out.
@@ -271,6 +340,12 @@
     _commitImg.hidden = NO;
     _loggingInMessage.hidden = YES;
     _loggingInMessage.text = @"";
+    _userNameText.hidden = NO;
+    _userNameText.text = @"";
+    _passwordText.hidden = NO;
+    _passwordText.text = @"";
+    _authCodeText.hidden = YES;
+    _authCodeText.text = @"";
     
     // Set the logo image.
     UIImage *commitImg = [UIImage imageNamed:@"commits"];
