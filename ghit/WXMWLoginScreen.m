@@ -144,6 +144,7 @@
 
 - (IBAction)localLogin:(id)sender {
     
+    _passwordText.delegate = self;
 
     NSString *userName = _userNameText.text;
     NSString *password = _passwordText.text;
@@ -156,7 +157,7 @@
         [alert show];
         
     } else {
-        
+
         [self messageDuringAuthorization];
         
         // Grab the GH credentials from the config file and use to set a OCTClient.
@@ -170,18 +171,17 @@
 
         if (_authCodeText.text.length == 0) {
             otp = nil;
+            [_passwordText resignFirstResponder];
         } else {
             otp = _authCodeText.text;
+            [_authCodeText resignFirstResponder];
         }
-        
-        NSLog(@"%@", otp);
-    
+
         [[OCTClient signInAsUser:user password:password oneTimePassword:otp scopes:OCTClientAuthorizationScopesUser]
 
         subscribeNext:^(OCTClient *authenticatedClient) {
         
             [self saveUser:authenticatedClient];
-            
             
             // Now that repos have been stored, we can refresh the table view (on the main thread).
             dispatch_async(dispatch_get_main_queue(),
@@ -191,7 +191,6 @@
                         });
         
         } error:^(NSError *error) {
-            /// 666 = no user exists
             dispatch_async(dispatch_get_main_queue(),
                         ^{
                         [self displayButtonsForLoggedOutStatus];
@@ -204,6 +203,7 @@
                             [alert show];
                         }
                         
+                        // User has two factor authentication enabled, give them an input for that value.
                         if (error.code == 671) {
                             // Show an alert.
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication required."
@@ -216,12 +216,9 @@
                             _userNameText.text = userName;
                             _passwordText.text = password;
                             _authCodeText.text = @"";
+                            _authCodeText.delegate = self;
                         }
-            
-            
-            
-                        NSLog(@"%@ %ld", error, (long)error.code);
-                        });
+            });
         }];
         
     }
