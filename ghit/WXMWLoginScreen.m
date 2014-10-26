@@ -180,13 +180,12 @@
         [[OCTClient signInAsUser:user password:password oneTimePassword:otp scopes:OCTClientAuthorizationScopesUser]
 
         subscribeNext:^(OCTClient *authenticatedClient) {
-        
-            [self saveUser:authenticatedClient];
             
             // Now that repos have been stored, we can refresh the table view (on the main thread).
             dispatch_async(dispatch_get_main_queue(),
                         ^{
                             // Set UI state to logged in.
+                            [self saveUser:authenticatedClient];
                             [self displayButtonsForLoggedInStatus];
                         });
         
@@ -228,19 +227,20 @@
 // Save the user details as they are logged in.
 - (void)saveUser:(OCTClient *)client
 {
-
     // Prepare to store some items in defaults.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // Grab & store user information.  We'll need this stuff a bunch.
     NSString *token = client.token;
-    NSString *userName = client.user.login;
+    NSString *userName = client.user.rawLogin;
     
     [defaults setObject:token forKey:@"token"];
     [defaults setObject:userName forKey:@"user_name"];
     [defaults setBool:YES forKey:@"logged_in"];
    
     [defaults synchronize];
+    
+    NSString *uname = [defaults objectForKey:@"user_name"];
     
     // Store a user as they sign in.
     NSString *email = client.user.email;
