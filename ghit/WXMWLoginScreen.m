@@ -177,7 +177,7 @@
             [_authCodeText resignFirstResponder];
         }
 
-        [[OCTClient signInAsUser:user password:password oneTimePassword:otp scopes:OCTClientAuthorizationScopesUser]
+        [[OCTClient signInAsUser:user password:password oneTimePassword:otp scopes:OCTClientAuthorizationScopesRepository | OCTClientAuthorizationScopesUser | OCTClientAuthorizationScopesNotifications]
 
         subscribeNext:^(OCTClient *authenticatedClient) {
             
@@ -239,9 +239,7 @@
     [defaults setBool:YES forKey:@"logged_in"];
    
     [defaults synchronize];
-    
-    NSString *uname = [defaults objectForKey:@"user_name"];
-    
+
     // Store a user as they sign in.
     NSString *email = client.user.email;
     NSString *name = client.user.name;

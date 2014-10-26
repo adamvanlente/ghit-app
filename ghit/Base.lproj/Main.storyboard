@@ -27,9 +27,6 @@
                                     <action selector="logoutOfGithub:" destination="C2U-cN-usm" eventType="touchUpInside" id="yr8-pR-X62"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Huw-Oa-iKz">
-                                <rect key="frame" x="35" y="28" width="250" height="116"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="logging in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3Z-FM-rxl">
                                 <rect key="frame" x="18" y="209" width="288" height="47"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="24"/>
@@ -69,7 +66,7 @@
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PXY-V8-P1c">
                                 <rect key="frame" x="-2" y="205" width="325" height="55"/>
-                                <color key="backgroundColor" red="0.1190091913560896" green="0.75562021683673475" blue="0.43134071872927371" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.11900919140000001" green="0.75562021680000002" blue="0.43134071870000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                 <state key="normal" title="go to repos">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,8 +77,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afs-No-Qhi">
-                                <rect key="frame" x="80" y="277" width="164" height="36"/>
-                                <color key="backgroundColor" red="0.11900919140000001" green="0.75562021680000002" blue="0.43134071870000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="277" width="320" height="36"/>
+                                <color key="backgroundColor" red="0.93855628189999996" green="0.38354478600000003" blue="0.40391924099999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="log in with github">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -94,19 +91,22 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ghM-pC-ecn">
                                 <rect key="frame" x="63" y="157" width="198" height="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WMV-Wz-zqb">
-                                <rect key="frame" x="63" y="195" width="198" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <rect key="frame" x="63" y="196" width="198" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="authentication code" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gFW-n5-vkK">
                                 <rect key="frame" x="63" y="233" width="198" height="30"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42i-P7-FZy">
+                                <rect key="frame" x="35" y="33" width="250" height="116"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -116,7 +116,7 @@
                         <outlet property="closedIssuesButton" destination="Ab4-ip-ub4" id="INk-ue-Rnd"/>
                         <outlet property="loggingInMessage" destination="r3Z-FM-rxl" id="0bh-wJ-VBm"/>
                         <outlet property="loginButton" destination="Afs-No-Qhi" id="y2I-BV-yzq"/>
-                        <outlet property="logoImageView" destination="Huw-Oa-iKz" id="390-iS-8rG"/>
+                        <outlet property="logoImageView" destination="42i-P7-FZy" id="OQH-cG-o1m"/>
                         <outlet property="logoutButton" destination="2Rg-fQ-pc0" id="Kce-nH-z8b"/>
                         <outlet property="passwordText" destination="WMV-Wz-zqb" id="fWp-bq-jNB"/>
                         <outlet property="privateReposLabel" destination="UAe-Nj-PfJ" id="jeR-qN-GhY"/>
