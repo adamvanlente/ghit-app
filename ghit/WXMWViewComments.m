@@ -75,10 +75,14 @@
 
         
     } error:^(NSError *error) {
-        // Show an alert.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+        dispatch_async(dispatch_get_main_queue(),
+                       ^{
+
+                            // Show an alert.
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
                                                         message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+                            [alert show];
+                       });
     }];
 }
 
@@ -120,7 +124,7 @@
         NSMutableString *note = [self makeCommentNote:comment];
 
         // Set the location where the note should appear.
-        CGFloat noteHeight = (fromTop + prevLabelHeight + (padding * 2.5));
+        CGFloat noteHeight = (fromTop + prevLabelHeight + (padding * 2));
         
         // Insert the comment.
         [self insertCommentNote:noteHeight padding:padding note:note];
@@ -206,7 +210,7 @@
 // Insert a note below the comment showing who created it and when.
 - (void)insertCommentNote:(CGFloat)noteHeight padding:(CGFloat)padding note:(NSMutableString *)note
 {
-    UILabel *commentNotesLabel = [[UILabel alloc] initWithFrame:CGRectMake((padding * 2), noteHeight, 290, (padding * 2))];
+    UILabel *commentNotesLabel = [[UILabel alloc] initWithFrame:CGRectMake((padding * 3), noteHeight, 290, (padding * 2))];
     commentNotesLabel.textColor = [Utils hexColor:@"333333"];
     commentNotesLabel.text = note;
     commentNotesLabel.font = [UIFont systemFontOfSize:12];

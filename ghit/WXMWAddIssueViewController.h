@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *issueEditorTitle;
 @property (weak, nonatomic) IBOutlet UIButton *updateAndCloseButton;
 @property (weak, nonatomic) IBOutlet UIButton *updateIssueButton;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *activityIndicatorLabel;
 
 // Actions for creating a new issue.
 - (IBAction)cancelCreateNewIssue:(id)sender;

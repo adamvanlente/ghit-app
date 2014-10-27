@@ -29,6 +29,9 @@
 {
     [super viewDidLoad];
     
+    _activityIndicator.hidden = YES;
+    _activityIndicatorLabel.hidden = YES;
+    
     // Set some defaults and get the list of available contributors/assignees.
     [self initNewIssueDefaults];
     [self setCurrentRepoContributors];
@@ -51,6 +54,12 @@
         _updateIssueButton.hidden = NO;
        [self loadExistingIssue];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    _activityIndicator.hidden = YES;
+    _activityIndicatorLabel.hidden = YES;
 }
 
 - (void)loadExistingIssue
@@ -232,8 +241,13 @@
 }
 
 // Make a request to add a new issue.
-- (void)addNewlyCreatedIssue:(NSString *)issueName comments:(NSString *)comments labels:(NSMutableArray *)labels repo:(NSString *)repo assignee:(NSString *)assignee client:(OCTClient *)client userName:(NSString *)userName
+- (void)addNewlyCreatedIssue:(NSString *)issueName comments:(NSString *)comments labels:(NSMutableArray *)labels repo:(NSString *)repo assignee:(NSString *)assignee
+    client:(OCTClient *)client userName:(NSString *)userName
 {
+
+    _activityIndicator.hidden = NO;
+    _activityIndicatorLabel.hidden = NO;
+
     // Form the create new issue request.
     RACSignal *createNewIssueRequest = [client createIssueForRepo:repo owner:userName labels:labels title:issueName body:comments assignee:assignee];
     [[createNewIssueRequest collect] subscribeNext:^(OCTIssue *issue) {
@@ -247,6 +261,9 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
                                                         message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
+        
+        _activityIndicator.hidden = YES;
+        _activityIndicatorLabel.hidden =YES;
     }];
     
 }

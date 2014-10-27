@@ -75,10 +75,14 @@ BOOL firstLoad = YES;
                            [self setIssueToScreen:issue];
                        });
     } error:^(NSError *error) {
-        // Show an alert.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+        dispatch_async(dispatch_get_main_queue(),
+                       ^{
+
+                            // Show an alert.
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
                                                         message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+                            [alert show];
+                       });
     }];
     
 }

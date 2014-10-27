@@ -50,11 +50,6 @@ UIRefreshControl *refreshControl;
     self.tableView.separatorColor = [UIColor clearColor];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self.tableView reloadData];
-}
-
 // Refresh the current list of issues.
 - (void)refreshIssueList
 {
@@ -138,10 +133,15 @@ UIRefreshControl *refreshControl;
                            [refreshControl endRefreshing];
                        });
     } error:^(NSError *error) {
-        // Show an alert.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+
+        dispatch_async(dispatch_get_main_queue(),
+                       ^{
+
+                            // Show an alert.
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
                                                         message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+                            [alert show];
+                       });
     }];
 
 }

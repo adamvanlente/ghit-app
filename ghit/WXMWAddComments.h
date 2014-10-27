@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *commentTextField;
 - (IBAction)newCommentAdd:(id)sender;
 - (IBAction)newCommentCancel:(id)sender;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *activityIndicatorLabel;
 
 @end

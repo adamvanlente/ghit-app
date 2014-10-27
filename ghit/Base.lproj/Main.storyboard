@@ -482,10 +482,21 @@
                                     <action selector="addNewIssue:" destination="fqV-R5-vUE" eventType="touchUpInside" id="N4q-nl-YIZ"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZBK-BH-w3F">
+                                <rect key="frame" x="284" y="186" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="adding new issue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcc-zq-Wf0">
+                                <rect key="frame" x="151" y="185" width="130" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="ZBK-BH-w3F" id="HhS-gq-iPr"/>
+                        <outlet property="activityIndicatorLabel" destination="Mcc-zq-Wf0" id="29m-PU-hRJ"/>
                         <outlet property="addLabelsButton" destination="fIR-q9-pGU" id="D6j-63-bqQ"/>
                         <outlet property="addNewIssueButton" destination="FeD-zS-Ikt" id="11V-2y-PPL"/>
                         <outlet property="assignUserButton" destination="XfZ-Ux-pS7" id="9Ry-VZ-nNG"/>
@@ -786,11 +797,22 @@
                                 <color key="textColor" red="0.70699139030612246" green="0.70699139030612246" blue="0.70699139030612246" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zjk-h9-PyE">
+                                <rect key="frame" x="281" y="216" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="adding comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jBg-w1-RRs">
+                                <rect key="frame" x="153" y="216" width="130" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="uF4-7k-jSS"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="zjk-h9-PyE" id="j9b-da-ERe"/>
+                        <outlet property="activityIndicatorLabel" destination="jBg-w1-RRs" id="wYz-LQ-3jY"/>
                         <outlet property="commentTextField" destination="dqV-xL-bHf" id="sjy-yA-Muh"/>
                     </connections>
                 </viewController>
@@ -889,7 +911,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="hT2-oV-4gf"/>
+        <segue reference="Zz9-5W-hDe"/>
         <segue reference="7ut-oA-bm7"/>
     </inferredMetricsTieBreakers>
 </document>

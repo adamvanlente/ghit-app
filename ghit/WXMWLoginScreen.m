@@ -73,11 +73,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-//
-}
-
 // Set the UI to its initial state.
 - (void)initUi
 {
@@ -233,9 +228,10 @@
     // Grab & store user information.  We'll need this stuff a bunch.
     NSString *token = client.token;
     NSString *userName = client.user.rawLogin;
+    NSString *cleanUser = [userName stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     [defaults setObject:token forKey:@"token"];
-    [defaults setObject:userName forKey:@"user_name"];
+    [defaults setObject:cleanUser forKey:@"user_name"];
     [defaults setBool:YES forKey:@"logged_in"];
    
     [defaults synchronize];

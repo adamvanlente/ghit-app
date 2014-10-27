@@ -29,7 +29,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _activityIndicator.hidden = YES;
+    _activityIndicatorLabel.hidden = YES;
+    
     [self initNewComment];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    _activityIndicator.hidden = YES;
+    _activityIndicatorLabel.hidden = YES;
 }
 
 // Clear out the text field for a new comment to be added.
@@ -45,6 +54,9 @@
 }
 
 - (IBAction)newCommentAdd:(id)sender {
+
+    _activityIndicator.hidden = NO;
+    _activityIndicatorLabel.hidden = NO;
     
     // Access the defaults and get the currently exploring issue.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -72,18 +84,22 @@
     
     // Initiate request.
     [newCommentRequest subscribeNext:^(OCTIssueComment *newComment) {
-       
-        // Remove modal controller on completion.  This will roll back to the previous view, which
-        // will either be the issue detail view or the list of existing comments.
+        // New comment is silently created.  View has already been abandonded.
         [self dismissViewControllerAnimated:YES completion:nil];
-        
     } error:^(NSError *error) {
-        // Show an alert.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+
+        dispatch_async(dispatch_get_main_queue(),
+                       ^{
+
+                            // Show an alert.
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
                                                         message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+                            [alert show];
+                           
+                            _activityIndicator.hidden = YES;
+                            _activityIndicatorLabel.hidden = YES;
+                       });
     }];
-    
 }
 
 - (IBAction)newCommentCancel:(id)sender {
