@@ -97,6 +97,80 @@ UIRefreshControl *refreshControl;
         // Now that repos have been stored, we can refresh the table view (on the main thread).        
         dispatch_async(dispatch_get_main_queue(),
                        ^{
+                           
+                           
+                           if ([defaults boolForKey:@"show_organization_repos"]) {
+                               [self loadUserOrganizationReposForUser:client];
+                           } else {
+                                _loadingReposLabel.hidden = YES;
+                                [self.tableView reloadData];
+                                [refreshControl endRefreshing];
+                           }
+                           
+                       });
+    }];
+}
+
+- (void)loadUserOrganizationReposForUser:(OCTClient *)client
+{
+    RACSignal *orgsRequest = [client fetchOrganizationsForUser:client.user.rawLogin];
+    [[orgsRequest collect] subscribeNext:^(NSArray *orgs) {
+        for (OCTOrganization *org in orgs) {
+            [self addOrganizationRepos:client organizatonName:org];
+        }
+
+    } error:^(NSError *error) {
+        NSLog(@"Error loading user orgs: %@", error.description);
+    }];
+}
+
+- (void)addOrganizationRepos:(OCTClient *)client organizatonName:(OCTOrganization *)organization
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+    RACSignal *orgRepoRequest = [client fetchRepositoriesForOrganization:organization];
+    [[orgRepoRequest collect] subscribeNext:^(NSArray *orgRepos) {
+ 
+        for (OCTRepository *orgRepo in orgRepos) {
+           
+            NSMutableArray *itemsArray = [[NSMutableArray alloc] init];
+            NSMutableArray *existingRepos = [defaults objectForKey:@"repo_list"];
+            int exRepoIndex = 0;
+            int exRepoCount = [existingRepos count];
+            BOOL repoPlaced = NO;
+            
+            while (exRepoIndex < exRepoCount) {
+                
+                OCTRepository *curExRepo = [NSKeyedUnarchiver unarchiveObjectWithData:existingRepos[exRepoIndex]];
+                
+                NSComparisonResult nameCompare = [curExRepo.name compare:orgRepo.name];
+                
+                if (nameCompare == 1 && repoPlaced == NO) {
+                    NSData *orgRepoEncoded = [NSKeyedArchiver archivedDataWithRootObject:orgRepo];
+                    [itemsArray addObject:orgRepoEncoded];
+                    repoPlaced = YES;
+                }
+            
+                [itemsArray addObject:existingRepos[exRepoIndex]];
+            
+                exRepoIndex++;
+            }
+            
+            if (repoPlaced == NO) {
+                 NSData *orgRepoEncoded = [NSKeyedArchiver archivedDataWithRootObject:orgRepo];
+                [itemsArray addObject:orgRepoEncoded];
+            }
+            
+            [defaults setObject:itemsArray forKey:@"repo_list"];
+            [defaults synchronize];
+        }
+        
+    } error:^(NSError *error) {
+        NSLog(@"Error adding organization repos %@", error.description);
+    } completed:^{
+    
+    dispatch_async(dispatch_get_main_queue(),
+                       ^{
                            _loadingReposLabel.hidden = YES;
                            [self.tableView reloadData];
                            [refreshControl endRefreshing];
@@ -117,7 +191,6 @@ UIRefreshControl *refreshControl;
     // Rows are based on the number of repos.  Grab the repo list and get the count.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *repoList = [defaults objectForKey:@"repo_list"];
-    
     return [repoList count];
 }
 
@@ -200,12 +273,18 @@ UIRefreshControl *refreshControl;
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
+        // This sync is needed because org repositories setting may be updating
+        // defaults int he background.  Want to make sure we've got most
+        // up to date set of defaults at this stage.
+        [defaults synchronize];
+
         // Get the clicked row.
         NSIndexPath *ip = [self.tableView indexPathForSelectedRow];
         NSUInteger row = ip.row;
         
         // Get the current repo.
         NSArray *repoList = [defaults objectForKey:@"repo_list"];
+        
         OCTRepository *repoItem = [NSKeyedUnarchiver unarchiveObjectWithData:repoList[row]];
         NSString *repoName = repoItem.name;
         NSString *stringedRow = [NSString stringWithFormat:@"%lu", (unsigned long)row];
@@ -213,6 +292,7 @@ UIRefreshControl *refreshControl;
         // Store the current repo name and index.
         [defaults setObject:repoName forKey:@"current_repo_name"];
         [defaults setObject:stringedRow forKey:@"current_repo_index"];
+        [defaults setObject:repoItem.ownerLogin forKey:@"current_repo_owner"];
         [defaults synchronize];
     }
 }

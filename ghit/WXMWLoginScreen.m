@@ -63,13 +63,22 @@
         _closeButtonLabel.text = @"closed issues hidden";
     }
     
-    // Check the bollean for showing private repos.
+    // Check the boolean for showing private repos.
     if ([defaults boolForKey:@"hide_private_repos"]) {
         _privateReposSwitch.on = NO;
         _privateReposLabel.text = @"private repos hidden";
     } else {
         _privateReposSwitch.on = YES;
         _privateReposLabel.text = @"private repos visible";
+    }
+    
+    // Check the boolean for showing organization repos.
+    if ([defaults boolForKey:@"show_organization_repos"]) {
+        _orgReposSwitch.on = YES;
+        _orgReposLabel.text = @"organization repos visible";       
+    } else {
+        _orgReposSwitch.on = NO;
+        _orgReposLabel.text = @"organization repos hidden";
     }
 }
 
@@ -78,9 +87,6 @@
 {
     // Clear all UI elements.
     [self clearAllButtons];
-    
-    // Set the background color of the home screen.
-//    self.view.backgroundColor = [Utils hexColor:@"edecec"];
     
     UIGraphicsBeginImageContext(self.view.frame.size);
     [[UIImage imageNamed:@"home_bg_2.png"] drawInRect:self.view.bounds];
@@ -195,10 +201,8 @@
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Invalid credentials."
                                                         message:@"Username or password is incorrect.  Please try again." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                             [alert show];
-                        }
-                        
                         // User has two factor authentication enabled, give them an input for that value.
-                        if (error.code == 671) {
+                        } else if (error.code == 671) {
                             // Show an alert.
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Authentication required."
                                                         message:@"Your account requires two step authentication.  Please enter your authentication code." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
@@ -211,6 +215,8 @@
                             _passwordText.text = password;
                             _authCodeText.text = @"";
                             _authCodeText.delegate = self;
+                        } else {
+                            NSLog(@"%@ %ld", error.description, (long)error.code);
                         }
             });
         }];
@@ -303,6 +309,8 @@
     _closeButtonLabel.hidden = NO;
     _privateReposLabel.hidden = NO;
     _privateReposSwitch.hidden = NO;
+    _orgReposSwitch.hidden = NO;
+    _orgReposLabel.hidden = NO;
     _commitImg.hidden = YES;
     _userNameText.hidden = YES;
     _passwordText.hidden = YES;
@@ -328,6 +336,8 @@
     _closeButtonLabel.hidden = YES;
     _privateReposLabel.hidden = YES;
     _privateReposSwitch.hidden = YES;
+    _orgReposLabel.hidden = YES;
+    _orgReposSwitch.hidden = YES;
     _commitImg.hidden = NO;
     _loggingInMessage.hidden = YES;
     _loggingInMessage.text = @"";
@@ -357,6 +367,30 @@
         _privateReposLabel.text = @"private repos hidden";
     }
     [defaults synchronize];
+}
+
+// Toggle whether or not user will see private repos.
+- (IBAction)toggleOrganizationRepos:(id)sender {
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL showOrganizationRepos = _orgReposSwitch.on;
+    
+    if (showOrganizationRepos) {
+        [defaults setBool:YES forKey:@"show_organization_repos"];
+        _orgReposLabel.text = @"organization repos visible";
+    } else {
+        [defaults removeObjectForKey:@"show_organization_repos"];
+        _orgReposLabel.text = @"organization repos hidden";
+    }
+    [defaults synchronize];
+}
+
+- (IBAction)rateGhit:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id929836674"]];
+}
+
+- (IBAction)ghitSite:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://ghit.io"]];
 }
 
 // Toggle whether or not user will see closed issues.

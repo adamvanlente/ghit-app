@@ -49,7 +49,7 @@ NSMutableArray *selectedItems;
 {
     // Get the current repo information.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *userName = [defaults objectForKey:@"user_name"];
+    NSString *userName = [defaults objectForKey:@"current_repo_owner"];
     NSString *currentRepo = [defaults objectForKey:@"current_repo_name"];
     
     // Reveal the loading indicator while the request is made.

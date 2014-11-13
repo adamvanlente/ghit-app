@@ -126,7 +126,7 @@
     // Get current reponame and current username,
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *currentRepoName = [defaults objectForKey:@"current_repo_name"];
-    NSString *userName = [defaults objectForKey:@"user_name"];
+    NSString *userName = [defaults objectForKey:@"current_repo_owner"];
     
     // Create a client in order to make a request.
     NSString *token = [defaults objectForKey:@"token"];
@@ -206,7 +206,7 @@
         NSString *state = [defaults objectForKey:@"issue_state"];
         
         // Create a client to make the request.
-        NSString *userName = [defaults objectForKey:@"user_name"];
+        NSString *userName = [defaults objectForKey:@"current_repo_owner"];
         NSString *token = [defaults objectForKey:@"token"];
         OCTUser *user = [OCTUser userWithRawLogin:userName server:OCTServer.dotComServer];
         OCTClient *client = [OCTClient authenticatedClientWithUser:user token:token];

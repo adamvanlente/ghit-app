@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *closeButtonLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *privateReposSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *privateReposLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *orgReposSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *orgReposLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *commitImg;
 @property (weak, nonatomic) IBOutlet UILabel *loggingInMessage;
 @property (weak, nonatomic) IBOutlet UITextField *userNameText;
@@ -40,5 +42,10 @@
 
 // Method to toggle the visiblity of private repos.
 - (IBAction)togglePrivateRepos:(id)sender;
+
+// Method to toggle organization repos.
+- (IBAction)toggleOrganizationRepos:(id)sender;
+- (IBAction)rateGhit:(id)sender;
+- (IBAction)ghitSite:(id)sender;
 
 @end
