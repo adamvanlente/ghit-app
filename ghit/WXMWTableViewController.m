@@ -76,7 +76,7 @@ UIRefreshControl *refreshControl;
     // Assemble and make the request for repositiories.
     RACSignal *repoRequest = [client fetchUserRepositories];
     [repoRequest subscribeNext:^(OCTRepository *repository) {
-        
+
         if ([defaults boolForKey:@"hide_private_repos"] && repository.private) {
             // Do nothing - hiding private repos.
         } else {
@@ -97,8 +97,7 @@ UIRefreshControl *refreshControl;
         // Now that repos have been stored, we can refresh the table view (on the main thread).        
         dispatch_async(dispatch_get_main_queue(),
                        ^{
-                           
-                           
+                          
                            if ([defaults boolForKey:@"show_organization_repos"]) {
                                [self loadUserOrganizationReposForUser:client];
                            } else {
@@ -115,6 +114,7 @@ UIRefreshControl *refreshControl;
 {
     RACSignal *orgsRequest = [client fetchOrganizationsForUser:client.user.rawLogin];
     [[orgsRequest collect] subscribeNext:^(NSArray *orgs) {
+
         for (OCTOrganization *org in orgs) {
             [self addOrganizationRepos:client organizatonName:org];
         }
@@ -130,7 +130,7 @@ UIRefreshControl *refreshControl;
 
     RACSignal *orgRepoRequest = [client fetchRepositoriesForOrganization:organization];
     [[orgRepoRequest collect] subscribeNext:^(NSArray *orgRepos) {
- 
+
         for (OCTRepository *orgRepo in orgRepos) {
            
             NSMutableArray *itemsArray = [[NSMutableArray alloc] init];
@@ -163,6 +163,7 @@ UIRefreshControl *refreshControl;
             
             [defaults setObject:itemsArray forKey:@"repo_list"];
             [defaults synchronize];
+            [self.tableView reloadData];
         }
         
     } error:^(NSError *error) {
