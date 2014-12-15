@@ -10,6 +10,7 @@
 #import "WXMWLoginScreen.h"
 #import "WXMWTableViewCell.h"
 #import "WXMWNavController.h"
+#import "Utils.h"
 #import <OctoKit/OctoKit.h>
 
 @interface WXMWTableViewController ()
@@ -88,6 +89,10 @@ UIRefreshControl *refreshControl;
     } error:^(NSError *error) {
         _loadingReposLabel.hidden = NO;
         _loadingReposLabel.text = @"an error ocurred.  please try again.";
+        
+        NSString *errorMessage = (@"Error loading repositories: %@", error.description);
+        [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
+        
     } completed:^{
         
         // When all repos have arrived, store the list of (encoded) repos to user defaults.
@@ -100,6 +105,8 @@ UIRefreshControl *refreshControl;
                           
                            if ([defaults boolForKey:@"show_organization_repos"]) {
                                [self loadUserOrganizationReposForUser:client];
+                                [self.tableView reloadData];
+                                [refreshControl endRefreshing];
                            } else {
                                 _loadingReposLabel.hidden = YES;
                                 [self.tableView reloadData];
@@ -120,7 +127,8 @@ UIRefreshControl *refreshControl;
         }
 
     } error:^(NSError *error) {
-        NSLog(@"Error loading user orgs: %@", error.description);
+        NSString *errorMessage = (@"Error loading user organizations: %@", error.description);
+        [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
     }];
 }
 
@@ -167,10 +175,11 @@ UIRefreshControl *refreshControl;
         }
         
     } error:^(NSError *error) {
-        NSLog(@"Error adding organization repos %@", error.description);
+        NSString *errorMessage = (@"Error adding organization repos to master list: %@", error.description);
+        [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
     } completed:^{
     
-    dispatch_async(dispatch_get_main_queue(),
+            dispatch_async(dispatch_get_main_queue(),
                        ^{
                            _loadingReposLabel.hidden = YES;
                            [self.tableView reloadData];
@@ -200,20 +209,21 @@ UIRefreshControl *refreshControl;
     // Get the list of repos from the user defaults.
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *repoList = [defaults objectForKey:@"repo_list"];
-    
+
     // Instantiate a cell.
     WXMWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
     
     // Grab the current repository and its details.
     NSUInteger row = [indexPath row];
-    OCTRepository *repoItem = [NSKeyedUnarchiver unarchiveObjectWithData:repoList[row]];
-
-    [self setRepoIsPrivate:repoItem cell:cell];
-    [self setRepoNameAndDescription:repoItem cell:cell];
-    [self setIssueCount:repoItem cell:cell];
-    [self setRepoOwner:repoItem cell:cell];
+        
+        OCTRepository *repoItem = [NSKeyedUnarchiver unarchiveObjectWithData:repoList[row]];
     
-    return cell;
+        [self setRepoIsPrivate:repoItem cell:cell];
+        [self setRepoNameAndDescription:repoItem cell:cell];
+        [self setIssueCount:repoItem cell:cell];
+        [self setRepoOwner:repoItem cell:cell];
+    
+        return cell;
 }
 
 - (void)setRepoIsPrivate:(OCTRepository *)repo cell:(WXMWTableViewCell *)cell

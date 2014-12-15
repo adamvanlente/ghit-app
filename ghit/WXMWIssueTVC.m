@@ -9,6 +9,7 @@
 #import "WXMWIssueTVC.h"
 #import "WXMWIssueTVCell.h"
 #import "WXMWNavController.h"
+#import "Utils.h"
 
 @interface WXMWIssueTVC ()
 
@@ -141,6 +142,9 @@ UIRefreshControl *refreshControl;
                             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
                                                         message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
                             [alert show];
+                           
+                            NSString *errorMessage = (@"Error loading user orgs: %@", error.description);
+                            [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
                        });
     }];
 

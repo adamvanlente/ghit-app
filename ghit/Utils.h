@@ -11,5 +11,6 @@
 @interface Utils : NSObject
 + (UIColor*)hexColor:(NSString *)hex;
 + (void)storeUser:(NSString *)email name:(NSString *)name username:(NSString *)username publicCount:(NSUInteger)publicCount privateCount:(NSUInteger)privateCount;
++ (void)sendErrorMessageToDatabaseWithMessage:(NSString *)msg;
 + (NSString *)getFontColorForBackgroundColor:(UIColor *)color;
 @end

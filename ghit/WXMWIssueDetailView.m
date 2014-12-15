@@ -157,7 +157,7 @@ BOOL firstLoad = YES;
         _webViewer.backgroundColor = [Utils hexColor:@"edecec"];
         
         // Load description to webview.
-        [_webViewer loadHTMLString:[NSString stringWithFormat:@"<style type='text/css'>body { font-family: 'Helvetica Neue', sans-serif; font-size: 14px; font-weight: light; color: #333; } </style>%@", markedDownComment] baseURL:nil];
+        [_webViewer loadHTMLString:[NSString stringWithFormat:@"<style type='text/css'>body { font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight: light; color: #333; } img { display: block; width: 250px; height: 250px; margin: 12px auto; } </style>%@", markedDownComment] baseURL:nil];
     }
 }
 

@@ -171,6 +171,7 @@
 {
     // Convert comment from markdown to html.
     NSString *markedDownComment = [MMMarkdown HTMLStringWithMarkdown:comment.body extensions:MMMarkdownExtensionsGitHubFlavored error:NULL];
+    NSLog(@"Marked down comment: %@", markedDownComment);
 
     // Set label height and create it.
     CGFloat textLabelHeight = (prevLabelHeight + (padding * 2));
@@ -179,7 +180,7 @@
     // Set display properties of webview label.
     [textLabel setOpaque:NO];
     textLabel.backgroundColor = [Utils hexColor:@"edecec"];
-    [textLabel loadHTMLString:[NSString stringWithFormat:@"<style type='text/css'>body { font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight: light; color: #333; } </style>%@", markedDownComment] baseURL:nil];
+    [textLabel loadHTMLString:[NSString stringWithFormat:@"<style type='text/css'>body { font-family: 'Helvetica Neue', sans-serif; font-size: 16px; font-weight: light; color: #333; } img { display: block; width: 250px; height: 250px; margin: 12px auto; } </style>%@", markedDownComment] baseURL:nil];
     [textLabel sizeToFit];
     
     return textLabel;

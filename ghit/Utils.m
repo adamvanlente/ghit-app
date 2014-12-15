@@ -53,7 +53,22 @@ NSMutableData *_responseData;
     NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@/%@/%lu/%lu", baseUrl, email, name, username, publicCount, privateCount];
 
     NSURL *reqUrl = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [self sendSynchronousRequestToMongoWithUrl:reqUrl];
+}
+
++ (void)sendErrorMessageToDatabaseWithMessage:(NSString *)msg {
+
+    NSMutableDictionary *config = [Config ghCredentials];
+    NSString *baseUrl = [config objectForKey:@"errorMessageUrl"];
     
+    NSString *urlString = [NSString stringWithFormat:@"%@/%@", baseUrl, msg];
+
+    NSURL *reqUrl = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [self sendSynchronousRequestToMongoWithUrl:reqUrl];
+}
+
++ (void)sendSynchronousRequestToMongoWithUrl:(NSURL *) reqUrl
+{
     NSURLRequest * urlRequest = [NSURLRequest requestWithURL:reqUrl];
     
     NSURLResponse * response = nil;

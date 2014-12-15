@@ -140,6 +140,9 @@
          // Hide the login button as the login occurs.
          _loginButton.hidden = NO;
          [_loginButton setTitle:@"login with github" forState:UIControlStateNormal];
+         
+         NSString *errorMessage = (@"Error logging user out: %@", error.description);
+         [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
      }];
 }
 
@@ -216,7 +219,9 @@
                             _authCodeText.text = @"";
                             _authCodeText.delegate = self;
                         } else {
-                            NSLog(@"%@ %ld", error.description, (long)error.code);
+
+                            NSString *errorMessage = (@"Error logging user in: %@", error.description);
+                            [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
                         }
             });
         }];
