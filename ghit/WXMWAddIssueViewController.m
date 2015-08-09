@@ -142,25 +142,25 @@
     [defaults synchronize];
     
     // Request the list of contributors.
-    RACSignal *contribRequest = [client fetchContributorsForRepo:currentRepoName owner:userName];
-    [contribRequest subscribeNext:^(OCTUser *contributor) {
-        
-        // Add all users who are not the current user to the list of available contributors.
-        if (![contributor.login isEqualToString:userName]) {
-            [allowedContributors addObject:contributor.login];
-        }
-        
-    } error:^(NSError *error) {
-        // Show an alert.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
-                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    } completed:^{
-        
-        // Once all users have been fetched, save the list of users.
-        [defaults setObject:allowedContributors forKey:@"current_repo_contributors"];
-        [defaults synchronize];
-    }];
+//    RACSignal *contribRequest = [client fetchContributorsForRepo:currentRepoName owner:userName];
+//    [contribRequest subscribeNext:^(OCTUser *contributor) {
+//        
+//        // Add all users who are not the current user to the list of available contributors.
+//        if (![contributor.login isEqualToString:userName]) {
+//            [allowedContributors addObject:contributor.login];
+//        }
+//        
+//    } error:^(NSError *error) {
+//        // Show an alert.
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+//                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//    } completed:^{
+//        
+//        // Once all users have been fetched, save the list of users.
+//        [defaults setObject:allowedContributors forKey:@"current_repo_contributors"];
+//        [defaults synchronize];
+//    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -224,20 +224,20 @@
 - (void)updateExistingIssue:(NSString *)issueName comments:(NSString *)comments labels:(NSMutableArray *)labels repo:(NSString *)repo assignee:(NSString *)assignee client:(OCTClient *)client userName:(NSString *)userName objectId:(NSUInteger)objectId state:(NSString *)state
 {
     // Form the update issue request.
-    RACSignal *updateIssueRequest = [client updateIssueForRepo:repo owner:userName labels:labels title:issueName body:comments assignee:assignee objectId:objectId state:state];
-    [[updateIssueRequest collect] subscribeNext:^(OCTIssue *issue) {
-
-        // If successful, dismiss the modal on the main thread.  Refreshing is handled by the parent view.
-        dispatch_async(dispatch_get_main_queue(),
-                       ^{  //back on main thread
-                           [self dismissViewControllerAnimated:YES completion:nil];
-                       });
-    } error:^(NSError *error) {
-        // Show an alert.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
-                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-    }];
+//    RACSignal *updateIssueRequest = [client updateIssueForRepo:repo owner:userName labels:labels title:issueName body:comments assignee:assignee objectId:objectId state:state];
+//    [[updateIssueRequest collect] subscribeNext:^(OCTIssue *issue) {
+//
+//        // If successful, dismiss the modal on the main thread.  Refreshing is handled by the parent view.
+//        dispatch_async(dispatch_get_main_queue(),
+//                       ^{  //back on main thread
+//                           [self dismissViewControllerAnimated:YES completion:nil];
+//                       });
+//    } error:^(NSError *error) {
+//        // Show an alert.
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+//                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//    }];
 }
 
 // Make a request to add a new issue.
@@ -249,22 +249,22 @@
     _activityIndicatorLabel.hidden = NO;
 
     // Form the create new issue request.
-    RACSignal *createNewIssueRequest = [client createIssueForRepo:repo owner:userName labels:labels title:issueName body:comments assignee:assignee];
-    [[createNewIssueRequest collect] subscribeNext:^(OCTIssue *issue) {
-        // If successful, dismiss the modal on the main thread.  Refreshing is handled by the parent view.
-        dispatch_async(dispatch_get_main_queue(),
-                       ^{  //back on main thread
-                           [self dismissViewControllerAnimated:YES completion:nil];
-                       });
-    } error:^(NSError *error) {
-        // Show an alert.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
-                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        
-        _activityIndicator.hidden = YES;
-        _activityIndicatorLabel.hidden =YES;
-    }];
+//    RACSignal *createNewIssueRequest = [client createIssueForRepo:repo owner:userName labels:labels title:issueName body:comments assignee:assignee];
+//    [[createNewIssueRequest collect] subscribeNext:^(OCTIssue *issue) {
+//        // If successful, dismiss the modal on the main thread.  Refreshing is handled by the parent view.
+//        dispatch_async(dispatch_get_main_queue(),
+//                       ^{  //back on main thread
+//                           [self dismissViewControllerAnimated:YES completion:nil];
+//                       });
+//    } error:^(NSError *error) {
+//        // Show an alert.
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+//                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        
+//        _activityIndicator.hidden = YES;
+//        _activityIndicatorLabel.hidden =YES;
+//    }];
     
 }
 

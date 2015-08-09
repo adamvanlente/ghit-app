@@ -87,11 +87,11 @@ UIRefreshControl *refreshControl;
         }
         
     } error:^(NSError *error) {
+        NSLog(@"error fetching repos!! %@", error.description);
         _loadingReposLabel.hidden = NO;
         _loadingReposLabel.text = @"an error ocurred.  please try again.";
-        
-        NSString *errorMessage = (@"Error loading repositories: %@", error.description);
-        [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
+
+        [Utils sendErrorMessageToDatabaseWithMessage:error.description];
         
     } completed:^{
         
@@ -119,17 +119,17 @@ UIRefreshControl *refreshControl;
 
 - (void)loadUserOrganizationReposForUser:(OCTClient *)client
 {
-    RACSignal *orgsRequest = [client fetchOrganizationsForUser:client.user.rawLogin];
-    [[orgsRequest collect] subscribeNext:^(NSArray *orgs) {
-
-        for (OCTOrganization *org in orgs) {
-            [self addOrganizationRepos:client organizatonName:org];
-        }
-
-    } error:^(NSError *error) {
-        NSString *errorMessage = (@"Error loading user organizations: %@", error.description);
-        [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
-    }];
+//    RACSignal *orgsRequest = [client fetchOrganizationsForUser:client.user.rawLogin];
+//    [[orgsRequest collect] subscribeNext:^(NSArray *orgs) {
+//
+//        for (OCTOrganization *org in orgs) {
+//            [self addOrganizationRepos:client organizatonName:org];
+//        }
+//
+//    } error:^(NSError *error) {
+//        NSString *errorMessage = (@"Error loading user organizations: %@", error.description);
+//        [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
+//    }];
 }
 
 - (void)addOrganizationRepos:(OCTClient *)client organizatonName:(OCTOrganization *)organization
@@ -245,7 +245,7 @@ UIRefreshControl *refreshControl;
 {
     NSString *repoName = repo.name;
     NSString *repoDesc = repo.repoDescription;
-    NSString *count = [repo.openIssues stringValue];
+//    NSString *count = [repo.openIssues stringValue];
     
     // Set the rest of the labels for the repo.
     if ([repoDesc isEqualToString:@""]) {
@@ -253,17 +253,17 @@ UIRefreshControl *refreshControl;
     }
     cell.repoNameLabel.text = repoName;
     cell.repoDescLabel.text = repoDesc;
-    cell.issueCountLabel.text = count;
+//    cell.issueCountLabel.text = count;
 }
 
 - (void)setIssueCount:(OCTRepository *)repo cell:(WXMWTableViewCell *)cell
 {
-    NSString *count = [repo.openIssues stringValue];
-    if ([count isEqualToString:@"1"]) {
-        cell.openIssuesNoteLabel.text = @"open issue";
-    } else {
-        cell.openIssuesNoteLabel.text = @"open issues";
-    }
+//    NSString *count = [repo.openIssues stringValue];
+//    if ([count isEqualToString:@"1"]) {
+//        cell.openIssuesNoteLabel.text = @"open issue";
+//    } else {
+//        cell.openIssuesNoteLabel.text = @"open issues";
+//    }
     cell.issueCountLabel.layer.masksToBounds = YES;
 }
 

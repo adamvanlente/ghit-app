@@ -140,28 +140,29 @@
          // Hide the login button as the login occurs.
          _loginButton.hidden = NO;
          [_loginButton setTitle:@"login with github" forState:UIControlStateNormal];
-         
-         NSString *errorMessage = (@"Error logging user out: %@", error.description);
-         [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
+
+         [Utils sendErrorMessageToDatabaseWithMessage:error.description];
      }];
 }
 
 - (IBAction)localLogin:(id)sender {
     
+    // Set username and password for request.
     _passwordText.delegate = self;
-
     NSString *userName = _userNameText.text;
     NSString *password = _passwordText.text;
     
+    // Case for user || pass being empty.
     if (_userNameText.text.length == 0 || _passwordText.text.length == 0) {
         
-        // Show an alert.
+        // Show an alert, user/pass cannot be empty.
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"User/Pass cannot be empty."
                                                         message:@"Please enter a username and/or password." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
         
     } else {
 
+        //  Set a message about the authorization attempt.
         [self messageDuringAuthorization];
         
         // Grab the GH credentials from the config file and use to set a OCTClient.
@@ -170,6 +171,7 @@
         NSString *clientSecret = [config objectForKey:@"clientSecret"];
         [OCTClient setClientID:clientId clientSecret:clientSecret];
     
+        // Set the user.
         OCTUser *user = [OCTUser userWithRawLogin:userName server:OCTServer.dotComServer];
         NSString *otp;
 

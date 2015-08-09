@@ -61,29 +61,29 @@
     OCTClient *client = [OCTClient authenticatedClientWithUser:user token:token];
     
     // Create a request for the list of issues.
-    RACSignal *commentRequest = [client fetchCommentsForIssueWithNumber:id name:currentRepoName owner:userName];
-    
-    // Make the request and collect the response as one array.
-    [[commentRequest collect] subscribeNext:^(NSArray *comments) {
-        
-        dispatch_async(dispatch_get_main_queue(),
-                       ^{
-                           //back on main thread
-                           _loadingLabel.hidden = YES;
-                           [self showCommentsOnScreen:comments];
-                       });
-
-        
-    } error:^(NSError *error) {
-        dispatch_async(dispatch_get_main_queue(),
-                       ^{
-
-                            // Show an alert.
-                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
-                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                            [alert show];
-                       });
-    }];
+//    RACSignal *commentRequest = [client fetchCommentsForIssueWithNumber:id name:currentRepoName owner:userName];
+//    
+//    // Make the request and collect the response as one array.
+//    [[commentRequest collect] subscribeNext:^(NSArray *comments) {
+//        
+//        dispatch_async(dispatch_get_main_queue(),
+//                       ^{
+//                           //back on main thread
+//                           _loadingLabel.hidden = YES;
+//                           [self showCommentsOnScreen:comments];
+//                       });
+//
+//        
+//    } error:^(NSError *error) {
+//        dispatch_async(dispatch_get_main_queue(),
+//                       ^{
+//
+//                            // Show an alert.
+//                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+//                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                            [alert show];
+//                       });
+//    }];
 }
 
 // Show comments on screen, in order from newest to oldest.
