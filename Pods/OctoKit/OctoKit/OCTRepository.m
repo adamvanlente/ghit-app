@@ -25,6 +25,7 @@ static NSString *const OCTRepositoryHTMLIssuesPath = @"issues";
 		@"datePushed": @"pushed_at",
 		@"repoDescription": @"description",
 		@"defaultBranch": @"default_branch",
+        @"openIssues": @"open_issues_count"
 	}];
 }
 
@@ -59,8 +60,8 @@ static NSString *const OCTRepositoryHTMLIssuesPath = @"issues";
 	// external representation is fixed (since it's always old data), thus the
 	// hard-coding.
 	dictionaryValue[@"name"] = externalRepresentation[@"name"];
-
-	id owner = externalRepresentation[@"owner"];
+	
+    id owner = externalRepresentation[@"owner"];
 	if ([owner isKindOfClass:NSString.class]) {
 		dictionaryValue[@"ownerLogin"] = owner;
 	} else if ([owner isKindOfClass:NSDictionary.class]) {
@@ -68,6 +69,7 @@ static NSString *const OCTRepositoryHTMLIssuesPath = @"issues";
 	}
 
 	dictionaryValue[@"repoDescription"] = externalRepresentation[@"description"] ?: NSNull.null;
+    dictionaryValue[@"openIssues"] = externalRepresentation[@"open_issues_count"] ?: NSNull.null;
 	dictionaryValue[@"private"] = externalRepresentation[@"private"] ?: @NO;
 	dictionaryValue[@"fork"] = externalRepresentation[@"fork"] ?: @NO;
 	dictionaryValue[@"datePushed"] = [self.datePushedJSONTransformer transformedValue:externalRepresentation[@"pushed_at"]] ?: NSNull.null;

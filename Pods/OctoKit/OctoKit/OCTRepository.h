@@ -26,6 +26,9 @@
 // The description of this repository.
 @property (nonatomic, copy, readonly) NSString *repoDescription;
 
+// Total number of open issues
+@property (nonatomic, copy, readonly) NSNumber *openIssues;
+
 // Whether this repository is private to the owner.
 @property (nonatomic, assign, getter = isPrivate, readonly) BOOL private;
 

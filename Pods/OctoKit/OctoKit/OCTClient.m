@@ -352,7 +352,6 @@ static NSString *OCTClientOAuthClientSecret = nil;
 			return [RACSignal error:error];
 		}]
 		reduceEach:^(OCTClient *client, OCTAuthorization *authorization) {
-            NSLog(@"here is auth obj: %@", authorization);
 			client.token = authorization.token;
 			return client;
 		}]

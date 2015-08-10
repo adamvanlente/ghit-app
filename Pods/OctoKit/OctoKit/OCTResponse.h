@@ -17,6 +17,7 @@
 
 // The etag uniquely identifying this response data.
 @property (nonatomic, copy, readonly) NSString *etag;
+@property (nonatomic, copy, readonly) NSString *statusCode;
 
 // Set to any X-Poll-Interval header returned by the server, or nil if no such
 // header was returned.

@@ -187,6 +187,7 @@ typedef enum : NSUInteger {
 // This will be `nil` when the client is created using
 // +unauthenticatedClientWithUser:.
 @property (nonatomic, copy, readonly) NSString *token;
+@property (nonatomic, copy, readonly) NSString *fingerprint;
 
 // Sets the HTTP User-Agent for the current app. This will have no effect on any
 // clients that have already been created.
@@ -224,7 +225,7 @@ typedef enum : NSUInteger {
 + (void)setClientID:(NSString *)clientID clientSecret:(NSString *)clientSecret;
 
 // Initializes the receiver to make requests to the given GitHub server.
-// 
+//
 // When using this initializer, the `user` property will not be set.
 // +authenticatedClientWithUser:token: or +unauthenticatedClientWithUser:
 // should typically be used instead.

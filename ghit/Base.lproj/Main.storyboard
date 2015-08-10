@@ -23,13 +23,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="closed issues" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWu-3v-jo0">
-                                <rect key="frame" x="16" y="322" width="157" height="21"/>
+                                <rect key="frame" x="16" y="277" width="157" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0M0-dY-ddL">
-                                <rect key="frame" x="251" y="360" width="51" height="31"/>
+                                <rect key="frame" x="251" y="315" width="51" height="31"/>
                                 <color key="tintColor" red="0.86340082908163263" green="0.86340082908163263" blue="0.86340082908163263" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="onTintColor" red="0.11900919140000001" green="0.75562021680000002" blue="0.43134071870000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <color key="thumbTintColor" red="0.89988858943037431" green="0.89854739935719041" blue="0.92197464923469385" alpha="1" colorSpace="calibratedRGB"/>
@@ -38,31 +38,14 @@
                                     <action selector="toggleShowClosedIssues:" destination="C2U-cN-usm" eventType="valueChanged" id="gRZ-Oy-ppY"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5ai-J7-Fcw">
-                                <rect key="frame" x="251" y="406" width="51" height="31"/>
-                                <color key="tintColor" red="0.86340082910000004" green="0.86340082910000004" blue="0.86340082910000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="onTintColor" red="0.11900919140000001" green="0.75562021680000002" blue="0.43134071870000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
-                                <color key="thumbTintColor" red="0.89988858940000005" green="0.89854739939999995" blue="0.92197464920000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <action selector="toggleOrganizationRepos:" destination="C2U-cN-usm" eventType="valueChanged" id="uZC-SV-PKF"/>
-                                    <action selector="togglePrivateRepos:" destination="C2U-cN-usm" eventType="valueChanged" id="z5f-tR-jks"/>
-                                    <action selector="toggleShowClosedIssues:" destination="C2U-cN-usm" eventType="valueChanged" id="LcD-ch-Gcn"/>
-                                </connections>
-                            </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="private repos visible" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UAe-Nj-PfJ">
-                                <rect key="frame" x="16" y="365" width="157" height="21"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="show organization repos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vu7-Mg-8bq">
-                                <rect key="frame" x="16" y="411" width="222" height="21"/>
+                                <rect key="frame" x="16" y="320" width="157" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ab4-ip-ub4">
-                                <rect key="frame" x="251" y="317" width="51" height="31"/>
+                                <rect key="frame" x="251" y="272" width="51" height="31"/>
                                 <color key="tintColor" red="0.86340082908163263" green="0.86340082908163263" blue="0.86340082908163263" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="onTintColor" red="0.11900919140000001" green="0.75562021680000002" blue="0.43134071870000001" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <color key="thumbTintColor" red="0.89988858943037431" green="0.89854739935719041" blue="0.92197464923469385" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,7 +69,7 @@
                                 <rect key="frame" x="0.0" y="259" width="320" height="53"/>
                                 <color key="backgroundColor" red="0.93855628189999996" green="0.38354478600000003" blue="0.40391924099999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
-                                <state key="normal" title="log in with github">
+                                <state key="normal" title="login with github">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -147,19 +130,29 @@
                                     <action selector="rateGhit:" destination="C2U-cN-usm" eventType="touchUpInside" id="iXa-zy-wZ4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TPX-Vs-7gf">
+                                <rect key="frame" x="0.0" y="328" width="323" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <state key="normal" title="login through browser">
+                                    <color key="titleColor" red="1" green="0.23015546148155286" blue="0.35483245777394212" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginToGithub:" destination="C2U-cN-usm" eventType="touchUpInside" id="41A-NT-5s3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="authCodeText" destination="gFW-n5-vkK" id="uXw-76-z6A"/>
+                        <outlet property="browserLoginButton" destination="TPX-Vs-7gf" id="A9a-gZ-fzt"/>
                         <outlet property="closeButtonLabel" destination="GWu-3v-jo0" id="u7K-uj-d5T"/>
                         <outlet property="closedIssuesButton" destination="Ab4-ip-ub4" id="INk-ue-Rnd"/>
                         <outlet property="loggingInMessage" destination="r3Z-FM-rxl" id="0bh-wJ-VBm"/>
                         <outlet property="loginButton" destination="Afs-No-Qhi" id="y2I-BV-yzq"/>
                         <outlet property="logoImageView" destination="gEn-3j-U69" id="vhr-8k-XVn"/>
                         <outlet property="logoutButton" destination="2Rg-fQ-pc0" id="Kce-nH-z8b"/>
-                        <outlet property="orgReposLabel" destination="Vu7-Mg-8bq" id="17H-eR-EOY"/>
-                        <outlet property="orgReposSwitch" destination="5ai-J7-Fcw" id="xS7-fB-YL5"/>
                         <outlet property="passwordText" destination="WMV-Wz-zqb" id="fWp-bq-jNB"/>
                         <outlet property="privateReposLabel" destination="UAe-Nj-PfJ" id="jeR-qN-GhY"/>
                         <outlet property="privateReposSwitch" destination="0M0-dY-ddL" id="LvV-ZJ-XUv"/>

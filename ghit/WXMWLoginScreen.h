@@ -36,6 +36,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameText;
 @property (weak, nonatomic) IBOutlet UITextField *passwordText;
 @property (weak, nonatomic) IBOutlet UITextField *authCodeText;
+@property (weak, nonatomic) IBOutlet UIButton *browserLoginButton;
 
 // Method to toggle the visiblity of closed issues.
 - (IBAction)toggleShowClosedIssues:(id)sender;

@@ -245,7 +245,7 @@ UIRefreshControl *refreshControl;
 {
     NSString *repoName = repo.name;
     NSString *repoDesc = repo.repoDescription;
-//    NSString *count = [repo.openIssues stringValue];
+    NSString *count = [repo.openIssues stringValue];
     
     // Set the rest of the labels for the repo.
     if ([repoDesc isEqualToString:@""]) {
@@ -253,17 +253,17 @@ UIRefreshControl *refreshControl;
     }
     cell.repoNameLabel.text = repoName;
     cell.repoDescLabel.text = repoDesc;
-//    cell.issueCountLabel.text = count;
+    cell.issueCountLabel.text = count;
 }
 
 - (void)setIssueCount:(OCTRepository *)repo cell:(WXMWTableViewCell *)cell
 {
-//    NSString *count = [repo.openIssues stringValue];
-//    if ([count isEqualToString:@"1"]) {
-//        cell.openIssuesNoteLabel.text = @"open issue";
-//    } else {
-//        cell.openIssuesNoteLabel.text = @"open issues";
-//    }
+    NSString *count = [repo.openIssues stringValue];
+    if ([count isEqualToString:@"1"]) {
+        cell.openIssuesNoteLabel.text = @"open issue";
+    } else {
+        cell.openIssuesNoteLabel.text = @"open issues";
+    }
     cell.issueCountLabel.layer.masksToBounds = YES;
 }
 
