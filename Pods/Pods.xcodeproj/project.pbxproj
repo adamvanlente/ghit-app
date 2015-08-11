@@ -304,8 +304,6 @@
 		C7225E041B77E57400077FA3 /* EXTScope.h in Headers */ = {isa = PBXBuildFile; fileRef = C7225E031B77E57400077FA3 /* EXTScope.h */; };
 		C72B2C59756E1AB5BA75B6235DB02812 /* OCTClient+Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 181ED5067E64EE0A4F021926D2ADC171 /* OCTClient+Activity.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		C7376A918991FBCD5C2CAFDD7B6503B6 /* RACScheduler+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 876549FC64C8F4C43D55F1422B8D84F5 /* RACScheduler+Private.h */; };
-		C7D6AD5E1B77FFCD006380AD /* OCTForkEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = C7D6AD5C1B77FFCD006380AD /* OCTForkEvent.h */; };
-		C7D6AD5F1B77FFCD006380AD /* OCTForkEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D6AD5D1B77FFCD006380AD /* OCTForkEvent.m */; };
 		C80E3193C3D59EFFE8FFB3C515E81112 /* RACErrorSignal.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF5DB690DC56D9FDD5FC65D6283584C /* RACErrorSignal.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -DOS_OBJECT_USE_OBJC=0"; }; };
 		C8F2C146694D941B6F47600D4BE62D2C /* NSSet+RACSequenceAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7902CCFBD95A3EA10C1AED9D3F94E911 /* NSSet+RACSequenceAdditions.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -DOS_OBJECT_USE_OBJC=0"; }; };
 		C94E7EF0BB65C763E76F372742BFC409 /* OCTClient+Git.h in Headers */ = {isa = PBXBuildFile; fileRef = 5925F365590A3D1A157FAFB2766C1453 /* OCTClient+Git.h */; };
@@ -785,8 +783,6 @@
 		C7225E031B77E57400077FA3 /* EXTScope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EXTScope.h; path = ReactiveCocoaFramework/ReactiveCocoa/EXTScope.h; sourceTree = "<group>"; };
 		C77438ECFAC42664F8604904330CCF0D /* UIControl+RACSignalSupportPrivate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIControl+RACSignalSupportPrivate.m"; path = "ReactiveCocoaFramework/ReactiveCocoa/UIControl+RACSignalSupportPrivate.m"; sourceTree = "<group>"; };
 		C789DB9EBF73D81F646164232940BE18 /* UICollectionReusableView+RACSignalSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UICollectionReusableView+RACSignalSupport.h"; path = "ReactiveCocoaFramework/ReactiveCocoa/UICollectionReusableView+RACSignalSupport.h"; sourceTree = "<group>"; };
-		C7D6AD5C1B77FFCD006380AD /* OCTForkEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCTForkEvent.h; path = ../../../../../../Desktop/octokit.objc/OctoKit/OCTForkEvent.h; sourceTree = "<group>"; };
-		C7D6AD5D1B77FFCD006380AD /* OCTForkEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCTForkEvent.m; path = ../../../../../../Desktop/octokit.objc/OctoKit/OCTForkEvent.m; sourceTree = "<group>"; };
 		C88473C9ACEA8F51EE89589C88AC52B9 /* UITableViewHeaderFooterView+RACSignalSupport.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UITableViewHeaderFooterView+RACSignalSupport.m"; path = "ReactiveCocoaFramework/ReactiveCocoa/UITableViewHeaderFooterView+RACSignalSupport.m"; sourceTree = "<group>"; };
 		C8FB0FD11EC0F91B6DE11A7A1E5B8C4C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		C9586EC47199EB365489F2328CAD554A /* OCTPublicKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = OCTPublicKey.h; path = OctoKit/OCTPublicKey.h; sourceTree = "<group>"; };
@@ -1197,8 +1193,6 @@
 				21B8C1977E156EE9D03B953F96A43FF2 /* OCTEvent.m */,
 				74502559716694D284A3AF7ADA98C915 /* OCTFileContent.h */,
 				C6687D3B13664FCDFD5BBD98C63D5094 /* OCTFileContent.m */,
-				C7D6AD5C1B77FFCD006380AD /* OCTForkEvent.h */,
-				C7D6AD5D1B77FFCD006380AD /* OCTForkEvent.m */,
 				E84303EE0728513DAFB2B56A66723341 /* OCTGist.h */,
 				672AACDBB9BC7E154D8FD6D370318443 /* OCTGist.m */,
 				9020E70D198007C74D7DFFA862251EDE /* OCTGistFile.h */,
@@ -1508,7 +1502,6 @@
 				F9FBE3064B6D2DBC3F614FE82BA29F19 /* AFURLConnectionOperation.h in Headers */,
 				95FE2AD93E645FCA6FAE57B41DAD0FA5 /* AFXMLRequestOperation.h in Headers */,
 				065DBE8E812871B158A1E1048F876CED /* UIImageView+AFNetworking.h in Headers */,
-				C7D6AD5E1B77FFCD006380AD /* OCTForkEvent.h in Headers */,
 				C7225E041B77E57400077FA3 /* EXTScope.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2056,7 +2049,6 @@
 				3BD9214A836363905CF055DC448D8DA5 /* AFHTTPClient.m in Sources */,
 				4A9E353ACB2EA72E04A55AD81FC4CB94 /* AFHTTPRequestOperation.m in Sources */,
 				1FE447715436422E849A6C350945B199 /* AFImageRequestOperation.m in Sources */,
-				C7D6AD5F1B77FFCD006380AD /* OCTForkEvent.m in Sources */,
 				0CB0EF61F756D984C42862E4D5666751 /* AFJSONRequestOperation.m in Sources */,
 				7E44C4968F8C4D8FB5AC423D06889764 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				C7225E021B7657A400077FA3 /* OCTIssueLabel.m in Sources */,

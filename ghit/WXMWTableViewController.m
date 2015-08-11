@@ -87,7 +87,6 @@ UIRefreshControl *refreshControl;
         }
         
     } error:^(NSError *error) {
-        NSLog(@"error fetching repos!! %@", error.description);
         _loadingReposLabel.hidden = NO;
         _loadingReposLabel.text = @"an error ocurred.  please try again.";
 
@@ -103,87 +102,11 @@ UIRefreshControl *refreshControl;
         dispatch_async(dispatch_get_main_queue(),
                        ^{
                           
-                           if ([defaults boolForKey:@"show_organization_repos"]) {
-                               [self loadUserOrganizationReposForUser:client];
-                                [self.tableView reloadData];
-                                [refreshControl endRefreshing];
-                           } else {
-                                _loadingReposLabel.hidden = YES;
-                                [self.tableView reloadData];
-                                [refreshControl endRefreshing];
-                           }
+
+                          _loadingReposLabel.hidden = YES;
+                          [self.tableView reloadData];
+                          [refreshControl endRefreshing];
                            
-                       });
-    }];
-}
-
-- (void)loadUserOrganizationReposForUser:(OCTClient *)client
-{
-//    RACSignal *orgsRequest = [client fetchOrganizationsForUser:client.user.rawLogin];
-//    [[orgsRequest collect] subscribeNext:^(NSArray *orgs) {
-//
-//        for (OCTOrganization *org in orgs) {
-//            [self addOrganizationRepos:client organizatonName:org];
-//        }
-//
-//    } error:^(NSError *error) {
-//        NSString *errorMessage = (@"Error loading user organizations: %@", error.description);
-//        [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
-//    }];
-}
-
-- (void)addOrganizationRepos:(OCTClient *)client organizatonName:(OCTOrganization *)organization
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-    RACSignal *orgRepoRequest = [client fetchRepositoriesForOrganization:organization];
-    [[orgRepoRequest collect] subscribeNext:^(NSArray *orgRepos) {
-
-        for (OCTRepository *orgRepo in orgRepos) {
-           
-            NSMutableArray *itemsArray = [[NSMutableArray alloc] init];
-            NSMutableArray *existingRepos = [defaults objectForKey:@"repo_list"];
-            int exRepoIndex = 0;
-            int exRepoCount = [existingRepos count];
-            BOOL repoPlaced = NO;
-            
-            while (exRepoIndex < exRepoCount) {
-                
-                OCTRepository *curExRepo = [NSKeyedUnarchiver unarchiveObjectWithData:existingRepos[exRepoIndex]];
-                
-                NSComparisonResult nameCompare = [curExRepo.name compare:orgRepo.name];
-                
-                if (nameCompare == 1 && repoPlaced == NO) {
-                    NSData *orgRepoEncoded = [NSKeyedArchiver archivedDataWithRootObject:orgRepo];
-                    [itemsArray addObject:orgRepoEncoded];
-                    repoPlaced = YES;
-                }
-            
-                [itemsArray addObject:existingRepos[exRepoIndex]];
-            
-                exRepoIndex++;
-            }
-            
-            if (repoPlaced == NO) {
-                 NSData *orgRepoEncoded = [NSKeyedArchiver archivedDataWithRootObject:orgRepo];
-                [itemsArray addObject:orgRepoEncoded];
-            }
-            
-            [defaults setObject:itemsArray forKey:@"repo_list"];
-            [defaults synchronize];
-            [self.tableView reloadData];
-        }
-        
-    } error:^(NSError *error) {
-        NSString *errorMessage = (@"Error adding organization repos to master list: %@", error.description);
-        [Utils sendErrorMessageToDatabaseWithMessage:errorMessage];
-    } completed:^{
-    
-            dispatch_async(dispatch_get_main_queue(),
-                       ^{
-                           _loadingReposLabel.hidden = YES;
-                           [self.tableView reloadData];
-                           [refreshControl endRefreshing];
                        });
     }];
 }

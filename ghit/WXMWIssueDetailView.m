@@ -60,30 +60,30 @@ BOOL firstLoad = YES;
     OCTClient *client = [OCTClient authenticatedClientWithUser:user token:token];
     
     // The request - created specifically for an issue that has just been updated.
-//    RACSignal *updatedIssueRequest = [client fetchIndividualIssueFromRepoWithName:currentRepoName owner:userName objectId:objectId];
-//    [updatedIssueRequest subscribeNext:^(OCTIssue *issue) {
-//
-//               // Once the issue is returned (there will only be one), render it to the screen.
-//               dispatch_async(dispatch_get_main_queue(),
-//                       ^{
-//                           // Store the current issue.
-//                           NSData *issueEncoded = [NSKeyedArchiver archivedDataWithRootObject:issue];
-//                           [defaults setObject:issueEncoded forKey:@"currently_viewing_issue"];
-//                           [defaults synchronize];
-//                           
-//                           // Render issue to the screen.
-//                           [self setIssueToScreen:issue];
-//                       });
-//    } error:^(NSError *error) {
-//        dispatch_async(dispatch_get_main_queue(),
-//                       ^{
-//
-//                            // Show an alert.
-//                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
-//                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//                            [alert show];
-//                       });
-//    }];
+    RACSignal *updatedIssueRequest = [client fetchIndividualIssueFromRepoWithName:currentRepoName owner:userName objectId:objectId];
+    [updatedIssueRequest subscribeNext:^(OCTIssue *issue) {
+
+               // Once the issue is returned (there will only be one), render it to the screen.
+               dispatch_async(dispatch_get_main_queue(),
+                       ^{
+                           // Store the current issue.
+                           NSData *issueEncoded = [NSKeyedArchiver archivedDataWithRootObject:issue];
+                           [defaults setObject:issueEncoded forKey:@"currently_viewing_issue"];
+                           [defaults synchronize];
+                           
+                           // Render issue to the screen.
+                           [self setIssueToScreen:issue];
+                       });
+    } error:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(),
+                       ^{
+
+                            // Show an alert.
+                            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"An error occurred."
+                                                        message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                            [alert show];
+                       });
+    }];
     
 }
 

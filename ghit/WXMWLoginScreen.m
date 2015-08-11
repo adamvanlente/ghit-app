@@ -34,7 +34,6 @@
 
     // Set labels based on whether the user is logged in or not.
     [self setToggleSwitches];
-    NSLog(@"view did load");
     _loggingInMessage.hidden = YES;
 
     // Set the ui to its initial state.
@@ -53,7 +52,7 @@
 }
 
 - (void)didFinishLaunchingWithOptions {
-    NSLog(@"asdfadsf");
+    // Nada
 }
 
 - (void)setToggleSwitches
@@ -291,7 +290,7 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == [alertView cancelButtonIndex]){
-        NSLog(@"just cancelled");
+        // Do Nothing
     } else {
         [self loginToGithub:self];
     }
